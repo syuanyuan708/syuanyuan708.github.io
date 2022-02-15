@@ -1893,11 +1893,11 @@ pre code {
   width: 100%;
 }
 .post-body p a {
-  color: #0593d3;
+  color: #0072e3;
   border-bottom: none;
 }
 .post-body p a:hover {
-  color: #ff106c;
+  color: #00f;
   text-decoration: underline;
 }
 .post-gallery {
