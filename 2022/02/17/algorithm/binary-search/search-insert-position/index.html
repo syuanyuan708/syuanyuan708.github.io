@@ -20,12 +20,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"syuanyuan.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.10.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-  <meta name="description" content="搜索插入位置给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。nums 为无重复元素的升序排列数组 leetcode 题目链接 示例1 12输入: nums &#x3D; [1,3,5,6], target &#x3D; 5输出: 2     示例2 12输入: nums &#x3D; [1,3,5,6], target &#x3D; 2输出: 1">
+  <meta name="description" content="搜索插入位置 给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。nums 为无重复元素的升序排列数组 leetcode 题目链接 示例1 12输入: nums &#x3D; [1,3,5,6], target &#x3D; 5输出: 2    示例2 12输入: nums &#x3D; [1,3,5,6], target &#x3D; 2输出: 1">
 <meta property="og:type" content="website">
 <meta property="og:title" content="搜索插入位置">
-<meta property="og:url" content="https://syuanyuan.com/2022/02/17/search-insert-position/index.html">
+<meta property="og:url" content="https://syuanyuan.com/2022/02/17/algorithm/binary-search/search-insert-position/index.html">
 <meta property="og:site_name" content="a东的博客">
-<meta property="og:description" content="搜索插入位置给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。nums 为无重复元素的升序排列数组 leetcode 题目链接 示例1 12输入: nums &#x3D; [1,3,5,6], target &#x3D; 5输出: 2     示例2 12输入: nums &#x3D; [1,3,5,6], target &#x3D; 2输出: 1">
+<meta property="og:description" content="搜索插入位置 给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。nums 为无重复元素的升序排列数组 leetcode 题目链接 示例1 12输入: nums &#x3D; [1,3,5,6], target &#x3D; 5输出: 2    示例2 12输入: nums &#x3D; [1,3,5,6], target &#x3D; 2输出: 1">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-02-16T16:00:00.000Z">
 <meta property="article:modified_time" content="2022-02-17T15:56:16.512Z">
@@ -34,11 +34,11 @@
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://syuanyuan.com/2022/02/17/search-insert-position/">
+<link rel="canonical" href="https://syuanyuan.com/2022/02/17/algorithm/binary-search/search-insert-position/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://syuanyuan.com/2022/02/17/search-insert-position/","path":"2022/02/17/search-insert-position/","title":"搜索插入位置"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://syuanyuan.com/2022/02/17/algorithm/binary-search/search-insert-position/","path":"2022/02/17/algorithm/binary-search/search-insert-position/","title":"搜索插入位置"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>搜索插入位置 | a东的博客</title>
@@ -135,7 +135,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -184,7 +184,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://syuanyuan.com/2022/02/17/search-insert-position/">
+    <link itemprop="mainEntityOfPage" href="https://syuanyuan.com/2022/02/17/algorithm/binary-search/search-insert-position/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/logo.svg">
@@ -222,7 +222,7 @@
     </span>
 
   
-    <span id="/2022/02/17/search-insert-position/" class="post-meta-item leancloud_visitors" data-flag-title="搜索插入位置" title="阅读次数">
+    <span id="/2022/02/17/algorithm/binary-search/search-insert-position/" class="post-meta-item leancloud_visitors" data-flag-title="搜索插入位置" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -238,51 +238,46 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="搜索插入位置"><a href="#搜索插入位置" class="headerlink" title="搜索插入位置"></a>搜索插入位置</h2><p>给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。<code>nums 为无重复元素的升序排列数组</code><br><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/binary-search/"> leetcode 题目链接</a></p>
-<p>示例1</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: nums = [1,3,5,6], target = 5</span><br><span class="line">输出: 2   </span><br></pre></td></tr></table></figure>
-
-<p>示例2</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: nums = [1,3,5,6], target = 2</span><br><span class="line">输出: 1 </span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-
-
-<p>示例3</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: nums = [1,3,5,6], target = 7</span><br><span class="line">输出: 4</span><br></pre></td></tr></table></figure>
-
-
-<p>示例4</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: nums = [1,3,5,6], target = 0</span><br><span class="line">输出: 0 </span><br></pre></td></tr></table></figure>
-
-
-<p>示例5</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: nums = [1], target = 0</span><br><span class="line">输出: 0</span><br></pre></td></tr></table></figure>
-
-<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><h4 id="暴力求解法"><a href="#暴力求解法" class="headerlink" title="暴力求解法"></a>暴力求解法</h4><p>虽然题目要求使用O(log n)时间复杂度的算法，但是O(n)时间复杂度在 <code>leetcode</code> 上也是可以通过的，我们先来看一下暴力求解法，首先我们分析一下目标值可能出现的几种情况：</p>
-<ol>
-<li>目标值在数组内，对于这种情况只需要查找到它的位置并返回即可</li>
-<li>目标值不在数组内，这种情况需要返回它被按顺序插入的位置，比如<code>示例2</code>所示，这种又分3种情况：<br> 2.1 目标值 &gt; 数组最小值 &amp;&amp; 目标值 &lt; 数组最大值 &amp;&amp; 目标值不在数组内<br> 2.2 目标值 &lt; 数组最小值<br> 2.3 目标值 &gt; 数组最大值</li>
-</ol>
-<p>考虑清楚上面可能出现的几种情况，就可以开始写代码了</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">searchInsert</span><span class="params">(nums []<span class="type">int</span>, target <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(nums); i++ &#123;</span><br><span class="line">        <span class="keyword">if</span> nums[i] &gt;= target &#123; <span class="comment">// 找到插入位置，包含了 1、2.1、2.2 三种 case</span></span><br><span class="line">            <span class="keyword">return</span> i</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">len</span>(nums) <span class="comment">// 目标值大于数组中最大值，对应 2.3 的 case</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>复杂度分析</strong></p>
+        <h2 id="搜索插入位置">搜索插入位置</h2>
+<p>给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。<code>nums 为无重复元素的升序排列数组</code>
+<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/binary-search/">leetcode
+题目链接</a></p>
+<p>示例1 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: nums = [1,3,5,6], target = 5</span><br><span class="line">输出: 2   </span><br></pre></td></tr></table></figure></p>
+<p>示例2 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: nums = [1,3,5,6], target = 2</span><br><span class="line">输出: 1 </span><br></pre></td></tr></table></figure> <span id="more"></span></p>
+<p>示例3 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: nums = [1,3,5,6], target = 7</span><br><span class="line">输出: 4</span><br></pre></td></tr></table></figure></p>
+<p>示例4 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: nums = [1,3,5,6], target = 0</span><br><span class="line">输出: 0 </span><br></pre></td></tr></table></figure></p>
+<p>示例5 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: nums = [1], target = 0</span><br><span class="line">输出: 0</span><br></pre></td></tr></table></figure></p>
+<h3 id="解题思路">解题思路</h3>
+<h4 id="暴力求解法">暴力求解法</h4>
+<p>虽然题目要求使用O(log n)时间复杂度的算法，但是O(n)时间复杂度在
+<code>leetcode</code>
+上也是可以通过的，我们先来看一下暴力求解法，首先我们分析一下目标值可能出现的几种情况：
+1. 目标值在数组内，对于这种情况只需要查找到它的位置并返回即可 2.
+目标值不在数组内，这种情况需要返回它被按顺序插入的位置，比如<code>示例2</code>所示，这种又分3种情况：
+2.1 目标值 &gt; 数组最小值 &amp;&amp; 目标值 &lt; 数组最大值 &amp;&amp;
+目标值不在数组内 2.2 目标值 &lt; 数组最小值 2.3 目标值 &gt;
+数组最大值</p>
+<p>考虑清楚上面可能出现的几种情况，就可以开始写代码了 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">searchInsert</span><span class="params">(nums []<span class="type">int</span>, target <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(nums); i++ &#123;</span><br><span class="line">        <span class="keyword">if</span> nums[i] &gt;= target &#123; <span class="comment">// 找到插入位置，包含了 1、2.1、2.2 三种 case</span></span><br><span class="line">            <span class="keyword">return</span> i</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">len</span>(nums) <span class="comment">// 目标值大于数组中最大值，对应 2.3 的 case</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>复杂度分析</strong> - 时间复杂度：O(n)，其中 n 是数组的长度。
+- 空间复杂度：O(1)。</p>
+<h4 id="二分查找法">二分查找法</h4>
+<p>数组是无重复元素的升序数组，因此可以使用二分查找算法。还是针对上面分析所得的几种可能存在的情况，若目标值在数组中则根据二分查找法可以找到对应的位置并返回。若目标值不在数组内呢?
+在前一篇介绍二分查找算法的文章 <a
+href="/2022/02/15/binary-search/">二分查找算法-运行结果分析</a>
+一节中我们分析了如果被查找目标值不在数组内，最终结束查找后的
+<code>left</code> 和 <code>right</code>
+指针的位置。根据分析结果我们知道，元素不在数组内时查找结束后：
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">left  指向第一个大于目标值的位置</span><br><span class="line">right 指向第一个小于目标值的位置</span><br></pre></td></tr></table></figure> 根据这个结论，我们可以确保在目标值不在数组中时直接返回
+<code>right+1</code> 能够覆盖 case 2 的所有情况，代码如下 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">searchInsert</span><span class="params">(nums []<span class="type">int</span>, target <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    left := <span class="number">0</span></span><br><span class="line">    right := <span class="built_in">len</span>(nums) - <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> left &lt;= right &#123;</span><br><span class="line">        mid := left + (right-left)/<span class="number">2</span></span><br><span class="line">        <span class="keyword">if</span> nums[mid] == target &#123;</span><br><span class="line">            <span class="keyword">return</span> mid</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> nums[mid] &lt; target &#123;</span><br><span class="line">            left = mid + <span class="number">1</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            right = mid - <span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> right + <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<strong>复杂度分析</strong> - 时间复杂度：O(log n)，其中 n
+是数组的长度。 - 空间复杂度：O(1)。</p>
+<h2 id="参考">参考</h2>
 <ul>
-<li>时间复杂度：O(n)，其中 n 是数组的长度。</li>
-<li>空间复杂度：O(1)。</li>
-</ul>
-<h4 id="二分查找法"><a href="#二分查找法" class="headerlink" title="二分查找法"></a>二分查找法</h4><p>数组是无重复元素的升序数组，因此可以使用二分查找算法。还是针对上面分析所得的几种可能存在的情况，若目标值在数组中则根据二分查找法可以找到对应的位置并返回。若目标值不在数组内呢?<br>在前一篇介绍二分查找算法的文章 <a href="/2022/02/15/binary-search/">二分查找算法-运行结果分析</a> 一节中我们分析了如果被查找目标值不在数组内，最终结束查找后的 <code>left</code> 和 <code>right</code> 指针的位置。根据分析结果我们知道，元素不在数组内时查找结束后：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">left  指向第一个大于目标值的位置</span><br><span class="line">right 指向第一个小于目标值的位置</span><br></pre></td></tr></table></figure>
-<p>根据这个结论，我们可以确保在目标值不在数组中时直接返回 <code>right+1</code> 能够覆盖 case 2 的所有情况，代码如下</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">searchInsert</span><span class="params">(nums []<span class="type">int</span>, target <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    left := <span class="number">0</span></span><br><span class="line">    right := <span class="built_in">len</span>(nums) - <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> left &lt;= right &#123;</span><br><span class="line">        mid := left + (right-left)/<span class="number">2</span></span><br><span class="line">        <span class="keyword">if</span> nums[mid] == target &#123;</span><br><span class="line">            <span class="keyword">return</span> mid</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> nums[mid] &lt; target &#123;</span><br><span class="line">            left = mid + <span class="number">1</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            right = mid - <span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> right + <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>复杂度分析</strong></p>
-<ul>
-<li>时间复杂度：O(log n)，其中 n 是数组的长度。</li>
-<li>空间复杂度：O(1)。</li>
-</ul>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://programmercarl.com/0035.%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE.html">代码随想录</a></li>
-<li><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/binary-search/solution/er-fen-cha-zhao-by-leetcode-solution-f0xw/">leetcode 题解</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://programmercarl.com/0035.%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE.html">代码随想录</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/binary-search/solution/er-fen-cha-zhao-by-leetcode-solution-f0xw/">leetcode
+题解</a></li>
 </ul>
 
     </div>
@@ -300,12 +295,12 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2022/02/15/binary-search/" rel="prev" title="二分查找">
-                  <i class="fa fa-chevron-left"></i> 二分查找
+                <a href="/2022/02/17/algorithm/binary-search/valid-perfect-square/" rel="prev" title="有效的完全平方数">
+                  <i class="fa fa-chevron-left"></i> 有效的完全平方数
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2022/02/17/my-sqrt/" rel="next" title="x 的平方根">
+                <a href="/2022/02/17/algorithm/binary-search/my-sqrt/" rel="next" title="x 的平方根">
                   x 的平方根 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
@@ -358,6 +353,12 @@
 
   <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"WevO9Ri3qfJwKi3ExRz6E9rc-gzGzoHsz","app_key":"SHjfod9pBDpL8E4yJDuzy2h1","server_url":"https://counter.tech.ipalfish.com","security":false}</script>
   <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 

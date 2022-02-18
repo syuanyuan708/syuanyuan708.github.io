@@ -20,12 +20,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"syuanyuan.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.10.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-  <meta name="description" content="在排序数组中查找元素的第一个和最后一个位置给定一个按照升序排列的整数数组 nums，和一个目标值 target。找出给定目标值在数组中的开始位置和结束位置。如果数组中不存在目标值 target，返回 [-1, -1]。nums 是一个非递减数组 leetcode 题目链接 示例1 12输入：nums &#x3D; [5,7,7,8,8,10], target &#x3D; 8输出：[3,4]  示例2 12输入：nu">
+  <meta name="description" content="在排序数组中查找元素的第一个和最后一个位置 给定一个按照升序排列的整数数组 nums，和一个目标值 target。找出给定目标值在数组中的开始位置和结束位置。 如果数组中不存在目标值 target，返回 [-1, -1]。nums 是一个非递减数组 leetcode 题目链接 示例1 12输入：nums &#x3D; [5,7,7,8,8,10], target &#x3D; 8输出：[3,4] 示例2 12输入：n">
 <meta property="og:type" content="website">
 <meta property="og:title" content="在排序数组中查找元素的第一个和最后一个位置">
-<meta property="og:url" content="https://syuanyuan.com/2022/02/17/find-first-and-last-position-of-element-in-sorted-array/index.html">
+<meta property="og:url" content="https://syuanyuan.com/2022/02/17/algorithm/binary-search/find-first-and-last-position-of-element-in-sorted-array/index.html">
 <meta property="og:site_name" content="a东的博客">
-<meta property="og:description" content="在排序数组中查找元素的第一个和最后一个位置给定一个按照升序排列的整数数组 nums，和一个目标值 target。找出给定目标值在数组中的开始位置和结束位置。如果数组中不存在目标值 target，返回 [-1, -1]。nums 是一个非递减数组 leetcode 题目链接 示例1 12输入：nums &#x3D; [5,7,7,8,8,10], target &#x3D; 8输出：[3,4]  示例2 12输入：nu">
+<meta property="og:description" content="在排序数组中查找元素的第一个和最后一个位置 给定一个按照升序排列的整数数组 nums，和一个目标值 target。找出给定目标值在数组中的开始位置和结束位置。 如果数组中不存在目标值 target，返回 [-1, -1]。nums 是一个非递减数组 leetcode 题目链接 示例1 12输入：nums &#x3D; [5,7,7,8,8,10], target &#x3D; 8输出：[3,4] 示例2 12输入：n">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-02-16T16:00:00.000Z">
 <meta property="article:modified_time" content="2022-02-17T16:06:57.440Z">
@@ -34,11 +34,11 @@
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://syuanyuan.com/2022/02/17/find-first-and-last-position-of-element-in-sorted-array/">
+<link rel="canonical" href="https://syuanyuan.com/2022/02/17/algorithm/binary-search/find-first-and-last-position-of-element-in-sorted-array/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://syuanyuan.com/2022/02/17/find-first-and-last-position-of-element-in-sorted-array/","path":"2022/02/17/find-first-and-last-position-of-element-in-sorted-array/","title":"在排序数组中查找元素的第一个和最后一个位置"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://syuanyuan.com/2022/02/17/algorithm/binary-search/find-first-and-last-position-of-element-in-sorted-array/","path":"2022/02/17/algorithm/binary-search/find-first-and-last-position-of-element-in-sorted-array/","title":"在排序数组中查找元素的第一个和最后一个位置"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>在排序数组中查找元素的第一个和最后一个位置 | a东的博客</title>
@@ -135,7 +135,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -184,7 +184,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://syuanyuan.com/2022/02/17/find-first-and-last-position-of-element-in-sorted-array/">
+    <link itemprop="mainEntityOfPage" href="https://syuanyuan.com/2022/02/17/algorithm/binary-search/find-first-and-last-position-of-element-in-sorted-array/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/logo.svg">
@@ -228,7 +228,7 @@
     </span>
 
   
-    <span id="/2022/02/17/find-first-and-last-position-of-element-in-sorted-array/" class="post-meta-item leancloud_visitors" data-flag-title="在排序数组中查找元素的第一个和最后一个位置" title="阅读次数">
+    <span id="/2022/02/17/algorithm/binary-search/find-first-and-last-position-of-element-in-sorted-array/" class="post-meta-item leancloud_visitors" data-flag-title="在排序数组中查找元素的第一个和最后一个位置" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -244,36 +244,36 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="在排序数组中查找元素的第一个和最后一个位置"><a href="#在排序数组中查找元素的第一个和最后一个位置" class="headerlink" title="在排序数组中查找元素的第一个和最后一个位置"></a>在排序数组中查找元素的第一个和最后一个位置</h2><p>给定一个按照升序排列的整数数组 nums，和一个目标值 target。找出给定目标值在数组中的开始位置和结束位置。<br>如果数组中不存在目标值 target，返回 [-1, -1]。<code>nums 是一个非递减数组</code><br><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array/"> leetcode 题目链接</a></p>
-<p>示例1</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [5,7,7,8,8,10], target = 8</span><br><span class="line">输出：[3,4]</span><br></pre></td></tr></table></figure>
-
-<p>示例2</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [5,7,7,8,8,10], target = 6</span><br><span class="line">输出：[-1,-1]</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-
-
-<p>示例3</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [], target = 0</span><br><span class="line">输出：[-1,-1]</span><br></pre></td></tr></table></figure>
-
-<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><h4 id="暴力求解法"><a href="#暴力求解法" class="headerlink" title="暴力求解法"></a>暴力求解法</h4><p>只需要一次遍历即可，在此不做讨论。</p>
-<h4 id="二分查找法"><a href="#二分查找法" class="headerlink" title="二分查找法"></a>二分查找法</h4><p>因为数组是非递减的可以考虑使用二分查找分别查找目标值在数组中的左边界 <code>leftBorder</code> 和右边界 <code>rightBorder</code> 。</p>
-<p><strong>查找左边界</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">func searchLeftBorder(nums []int, target int) int &#123;</span><br><span class="line">    left := 0</span><br><span class="line">    right := len(nums) - 1</span><br><span class="line">    leftBorder := -1</span><br><span class="line">    for left &lt;= right &#123;</span><br><span class="line">        mid := left + (right-left)/2</span><br><span class="line">        if nums[mid] == target &#123;</span><br><span class="line">            leftBorder = mid // 记录左边界</span><br><span class="line">            right = mid - 1  // 向左侧查找更左的边界</span><br><span class="line">        &#125; else if nums[mid] &lt; target &#123;</span><br><span class="line">            left = mid + 1</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            right = mid - 1</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return leftBorder</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>查找右边界</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">func searchRightBorder(nums []int, target int) int &#123;</span><br><span class="line">    left := 0</span><br><span class="line">    right := len(nums) - 1</span><br><span class="line">    rightBorder := -1</span><br><span class="line">    for left &lt;= right &#123;</span><br><span class="line">        mid := left + (right-left)/2</span><br><span class="line">        if nums[mid] == target &#123;</span><br><span class="line">            rightBorder = mid  // 记录右边界</span><br><span class="line">            left = mid + 1     // 向右侧查找更右的边界</span><br><span class="line">        &#125; else if nums[mid] &lt; target &#123;</span><br><span class="line">            left = mid + 1</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            right = mid - 1</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return rightBorder</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>上面的查找过程和标准的二分查找算法区别主要在于，一旦查找到目标值则更新边界值，并且向左查找更左的边界或向右查找更右的边界。查找完左右边界则最终处理结果如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">func searchRange(nums []int, target int) []int &#123;</span><br><span class="line">    leftBorder := searchLeftBorder(nums, target)</span><br><span class="line">    rightBorder := searchRightBorder(nums, target)</span><br><span class="line">    return []int&#123;leftBorder, rightBorder&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>复杂度分析</strong></p>
+        <h2
+id="在排序数组中查找元素的第一个和最后一个位置">在排序数组中查找元素的第一个和最后一个位置</h2>
+<p>给定一个按照升序排列的整数数组 nums，和一个目标值
+target。找出给定目标值在数组中的开始位置和结束位置。
+如果数组中不存在目标值 target，返回 [-1,
+-1]。<code>nums 是一个非递减数组</code> <a
+target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array/">leetcode
+题目链接</a></p>
+<p>示例1 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [5,7,7,8,8,10], target = 8</span><br><span class="line">输出：[3,4]</span><br></pre></td></tr></table></figure></p>
+<p>示例2 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [5,7,7,8,8,10], target = 6</span><br><span class="line">输出：[-1,-1]</span><br></pre></td></tr></table></figure> <span id="more"></span></p>
+<p>示例3 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [], target = 0</span><br><span class="line">输出：[-1,-1]</span><br></pre></td></tr></table></figure></p>
+<h3 id="解题思路">解题思路</h3>
+<h4 id="暴力求解法">暴力求解法</h4>
+<p>只需要一次遍历即可，在此不做讨论。</p>
+<h4 id="二分查找法">二分查找法</h4>
+<p>因为数组是非递减的可以考虑使用二分查找分别查找目标值在数组中的左边界
+<code>leftBorder</code> 和右边界 <code>rightBorder</code> 。</p>
+<p><strong>查找左边界</strong> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">func searchLeftBorder(nums []int, target int) int &#123;</span><br><span class="line">    left := 0</span><br><span class="line">    right := len(nums) - 1</span><br><span class="line">    leftBorder := -1</span><br><span class="line">    for left &lt;= right &#123;</span><br><span class="line">        mid := left + (right-left)/2</span><br><span class="line">        if nums[mid] == target &#123;</span><br><span class="line">            leftBorder = mid // 记录左边界</span><br><span class="line">            right = mid - 1  // 向左侧查找更左的边界</span><br><span class="line">        &#125; else if nums[mid] &lt; target &#123;</span><br><span class="line">            left = mid + 1</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            right = mid - 1</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return leftBorder</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>查找右边界</strong> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">func searchRightBorder(nums []int, target int) int &#123;</span><br><span class="line">    left := 0</span><br><span class="line">    right := len(nums) - 1</span><br><span class="line">    rightBorder := -1</span><br><span class="line">    for left &lt;= right &#123;</span><br><span class="line">        mid := left + (right-left)/2</span><br><span class="line">        if nums[mid] == target &#123;</span><br><span class="line">            rightBorder = mid  // 记录右边界</span><br><span class="line">            left = mid + 1     // 向右侧查找更右的边界</span><br><span class="line">        &#125; else if nums[mid] &lt; target &#123;</span><br><span class="line">            left = mid + 1</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            right = mid - 1</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return rightBorder</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+上面的查找过程和标准的二分查找算法区别主要在于，一旦查找到目标值则更新边界值，并且向左查找更左的边界或向右查找更右的边界。查找完左右边界则最终处理结果如下：
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">func searchRange(nums []int, target int) []int &#123;</span><br><span class="line">    leftBorder := searchLeftBorder(nums, target)</span><br><span class="line">    rightBorder := searchRightBorder(nums, target)</span><br><span class="line">    return []int&#123;leftBorder, rightBorder&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>复杂度分析</strong> - 时间复杂度：O(log n)，其中 n
+是数组的长度。 - 空间复杂度：O(1)。</p>
+<h2 id="参考">参考</h2>
 <ul>
-<li>时间复杂度：O(log n)，其中 n 是数组的长度。</li>
-<li>空间复杂度：O(1)。</li>
-</ul>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://programmercarl.com/0034.%E5%9C%A8%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E6%9F%A5%E6%89%BE%E5%85%83%E7%B4%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%92%8C%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E4%BD%8D%E7%BD%AE.html">代码随想录</a></li>
-<li><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array/solution/zai-pai-xu-shu-zu-zhong-cha-zhao-yuan-su-de-di-3-4/">leetcode 题解</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://programmercarl.com/0034.%E5%9C%A8%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E6%9F%A5%E6%89%BE%E5%85%83%E7%B4%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%92%8C%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E4%BD%8D%E7%BD%AE.html">代码随想录</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array/solution/zai-pai-xu-shu-zu-zhong-cha-zhao-yuan-su-de-di-3-4/">leetcode
+题解</a></li>
 </ul>
 
     </div>
@@ -291,7 +291,7 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2022/02/17/my-sqrt/" rel="prev" title="x 的平方根">
+                <a href="/2022/02/17/algorithm/binary-search/my-sqrt/" rel="prev" title="x 的平方根">
                   <i class="fa fa-chevron-left"></i> x 的平方根
                 </a>
             </div>
@@ -346,6 +346,12 @@
 
   <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"WevO9Ri3qfJwKi3ExRz6E9rc-gzGzoHsz","app_key":"SHjfod9pBDpL8E4yJDuzy2h1","server_url":"https://counter.tech.ipalfish.com","security":false}</script>
   <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 
