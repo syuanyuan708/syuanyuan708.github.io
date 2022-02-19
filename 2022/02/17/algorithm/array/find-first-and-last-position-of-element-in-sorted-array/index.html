@@ -23,22 +23,23 @@
   <meta name="description" content="在排序数组中查找元素的第一个和最后一个位置 给定一个按照升序排列的整数数组 nums，和一个目标值 target。找出给定目标值在数组中的开始位置和结束位置。 如果数组中不存在目标值 target，返回 [-1, -1]。nums 是一个非递减数组 leetcode 题目链接 示例1 12输入：nums &#x3D; [5,7,7,8,8,10], target &#x3D; 8输出：[3,4] 示例2 12输入：n">
 <meta property="og:type" content="website">
 <meta property="og:title" content="在排序数组中查找元素的第一个和最后一个位置">
-<meta property="og:url" content="https://syuanyuan.com/2022/02/17/algorithm/binary-search/find-first-and-last-position-of-element-in-sorted-array/index.html">
+<meta property="og:url" content="https://syuanyuan.com/2022/02/17/algorithm/array/find-first-and-last-position-of-element-in-sorted-array/index.html">
 <meta property="og:site_name" content="a东的博客">
 <meta property="og:description" content="在排序数组中查找元素的第一个和最后一个位置 给定一个按照升序排列的整数数组 nums，和一个目标值 target。找出给定目标值在数组中的开始位置和结束位置。 如果数组中不存在目标值 target，返回 [-1, -1]。nums 是一个非递减数组 leetcode 题目链接 示例1 12输入：nums &#x3D; [5,7,7,8,8,10], target &#x3D; 8输出：[3,4] 示例2 12输入：n">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-02-16T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-02-17T16:06:57.440Z">
+<meta property="article:modified_time" content="2022-02-19T13:09:02.690Z">
 <meta property="article:author" content="a东">
+<meta property="article:tag" content="数组">
 <meta property="article:tag" content="二分法">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://syuanyuan.com/2022/02/17/algorithm/binary-search/find-first-and-last-position-of-element-in-sorted-array/">
+<link rel="canonical" href="https://syuanyuan.com/2022/02/17/algorithm/array/find-first-and-last-position-of-element-in-sorted-array/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://syuanyuan.com/2022/02/17/algorithm/binary-search/find-first-and-last-position-of-element-in-sorted-array/","path":"2022/02/17/algorithm/binary-search/find-first-and-last-position-of-element-in-sorted-array/","title":"在排序数组中查找元素的第一个和最后一个位置"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://syuanyuan.com/2022/02/17/algorithm/array/find-first-and-last-position-of-element-in-sorted-array/","path":"2022/02/17/algorithm/array/find-first-and-last-position-of-element-in-sorted-array/","title":"在排序数组中查找元素的第一个和最后一个位置"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>在排序数组中查找元素的第一个和最后一个位置 | a东的博客</title>
@@ -120,7 +121,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E6%9F%A5%E6%89%BE%E5%85%83%E7%B4%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%92%8C%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E4%BD%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">在排序数组中查找元素的第一个和最后一个位置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="nav-number">1.1.</span> <span class="nav-text">解题思路</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9A%B4%E5%8A%9B%E6%B1%82%E8%A7%A3%E6%B3%95"><span class="nav-number">1.1.1.</span> <span class="nav-text">暴力求解法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E6%B3%95"><span class="nav-number">1.1.2.</span> <span class="nav-text">二分查找法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">2.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E6%9F%A5%E6%89%BE%E5%85%83%E7%B4%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%92%8C%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E4%BD%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">在排序数组中查找元素的第一个和最后一个位置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="nav-number">1.1.</span> <span class="nav-text">解题思路</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9A%B4%E5%8A%9B%E6%B1%82%E8%A7%A3%E6%B3%95"><span class="nav-number">1.1.1.</span> <span class="nav-text">暴力求解法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E6%B3%95"><span class="nav-number">1.1.2.</span> <span class="nav-text">二分查找法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="nav-number">1.2.</span> <span class="nav-text">复杂度分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">2.</span> <span class="nav-text">参考</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -135,7 +136,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -144,7 +145,7 @@
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -184,7 +185,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://syuanyuan.com/2022/02/17/algorithm/binary-search/find-first-and-last-position-of-element-in-sorted-array/">
+    <link itemprop="mainEntityOfPage" href="https://syuanyuan.com/2022/02/17/algorithm/array/find-first-and-last-position-of-element-in-sorted-array/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/logo.svg">
@@ -215,7 +216,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-02-18 00:06:57" itemprop="dateModified" datetime="2022-02-18T00:06:57+08:00">2022-02-18</time>
+      <time title="修改时间：2022-02-19 21:09:02" itemprop="dateModified" datetime="2022-02-19T21:09:02+08:00">2022-02-19</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -228,7 +229,7 @@
     </span>
 
   
-    <span id="/2022/02/17/algorithm/binary-search/find-first-and-last-position-of-element-in-sorted-array/" class="post-meta-item leancloud_visitors" data-flag-title="在排序数组中查找元素的第一个和最后一个位置" title="阅读次数">
+    <span id="/2022/02/17/algorithm/array/find-first-and-last-position-of-element-in-sorted-array/" class="post-meta-item leancloud_visitors" data-flag-title="在排序数组中查找元素的第一个和最后一个位置" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -265,8 +266,11 @@ target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/find-first
 <p><strong>查找右边界</strong> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">func searchRightBorder(nums []int, target int) int &#123;</span><br><span class="line">    left := 0</span><br><span class="line">    right := len(nums) - 1</span><br><span class="line">    rightBorder := -1</span><br><span class="line">    for left &lt;= right &#123;</span><br><span class="line">        mid := left + (right-left)/2</span><br><span class="line">        if nums[mid] == target &#123;</span><br><span class="line">            rightBorder = mid  // 记录右边界</span><br><span class="line">            left = mid + 1     // 向右侧查找更右的边界</span><br><span class="line">        &#125; else if nums[mid] &lt; target &#123;</span><br><span class="line">            left = mid + 1</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            right = mid - 1</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return rightBorder</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 上面的查找过程和标准的二分查找算法区别主要在于，一旦查找到目标值则更新边界值，并且向左查找更左的边界或向右查找更右的边界。查找完左右边界则最终处理结果如下：
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">func searchRange(nums []int, target int) []int &#123;</span><br><span class="line">    leftBorder := searchLeftBorder(nums, target)</span><br><span class="line">    rightBorder := searchRightBorder(nums, target)</span><br><span class="line">    return []int&#123;leftBorder, rightBorder&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><strong>复杂度分析</strong> - 时间复杂度：O(log n)，其中 n
-是数组的长度。 - 空间复杂度：O(1)。</p>
+<h3 id="复杂度分析">复杂度分析</h3>
+<ul>
+<li>时间复杂度：O(log n)，其中 n 是数组的长度。</li>
+<li>空间复杂度：O(1)。</li>
+</ul>
 <h2 id="参考">参考</h2>
 <ul>
 <li><a
@@ -284,6 +288,7 @@ target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/find-first
 
     <footer class="post-footer">
           <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E7%BB%84/" rel="tag"># 数组</a>
               <a href="/tags/%E4%BA%8C%E5%88%86%E6%B3%95/" rel="tag"># 二分法</a>
           </div>
 
@@ -291,11 +296,14 @@ target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/find-first
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2022/02/17/algorithm/binary-search/my-sqrt/" rel="prev" title="x 的平方根">
-                  <i class="fa fa-chevron-left"></i> x 的平方根
+                <a href="/2022/02/17/algorithm/array/search-insert-position/" rel="prev" title="搜索插入位置">
+                  <i class="fa fa-chevron-left"></i> 搜索插入位置
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2022/02/17/algorithm/array/my-sqrt/" rel="next" title="x 的平方根">
+                  x 的平方根 <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>
