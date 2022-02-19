@@ -20,28 +20,28 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"syuanyuan.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.10.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-  <meta name="description" content="移除元素 给你一个数组 nums和一个值 val，你需要 原地 移除所有数值等于val的元素，并返回移除后数组的新长度。 不要使用额外的数组空间，你必须仅使用 O(1) 额外空间并 原地 修改输入数组。 元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。 leetcode 题目链接 示例1 123输入：nums &#x3D; [3,2,2,3], val &#x3D; 3输出：2, nums &#x3D; [2,2]">
+  <meta name="description" content="有序数组的平方 给你一个按 非递减顺序 排序的整数数组 nums，返回 每个数字的平方 组成的新数组，要求也按 非递减顺序 排序。 leetcode 题目链接 示例1 123输入：nums &#x3D; [-4,-1,0,3,10]输出：[0,1,9,16,100]解释：平方后，数组变为 [16,1,0,9,100]，排序后，数组变为 [0,1,9,16,100] 示例2 12输入：nums &#x3D; [-7,-">
 <meta property="og:type" content="website">
-<meta property="og:title" content="移除元素">
-<meta property="og:url" content="https://syuanyuan.com/2022/02/19/algorithm/array/remove-element/index.html">
+<meta property="og:title" content="有序数组的平方">
+<meta property="og:url" content="https://syuanyuan.com/2022/02/19/algorithm/array/squares-of-a-sorted-array/index.html">
 <meta property="og:site_name" content="a东的博客">
-<meta property="og:description" content="移除元素 给你一个数组 nums和一个值 val，你需要 原地 移除所有数值等于val的元素，并返回移除后数组的新长度。 不要使用额外的数组空间，你必须仅使用 O(1) 额外空间并 原地 修改输入数组。 元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。 leetcode 题目链接 示例1 123输入：nums &#x3D; [3,2,2,3], val &#x3D; 3输出：2, nums &#x3D; [2,2]">
+<meta property="og:description" content="有序数组的平方 给你一个按 非递减顺序 排序的整数数组 nums，返回 每个数字的平方 组成的新数组，要求也按 非递减顺序 排序。 leetcode 题目链接 示例1 123输入：nums &#x3D; [-4,-1,0,3,10]输出：[0,1,9,16,100]解释：平方后，数组变为 [16,1,0,9,100]，排序后，数组变为 [0,1,9,16,100] 示例2 12输入：nums &#x3D; [-7,-">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-02-18T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-02-19T13:09:02.683Z">
+<meta property="article:modified_time" content="2022-02-19T15:01:59.992Z">
 <meta property="article:author" content="a东">
 <meta property="article:tag" content="数组">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://syuanyuan.com/2022/02/19/algorithm/array/remove-element/">
+<link rel="canonical" href="https://syuanyuan.com/2022/02/19/algorithm/array/squares-of-a-sorted-array/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://syuanyuan.com/2022/02/19/algorithm/array/remove-element/","path":"2022/02/19/algorithm/array/remove-element/","title":"移除元素"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://syuanyuan.com/2022/02/19/algorithm/array/squares-of-a-sorted-array/","path":"2022/02/19/algorithm/array/squares-of-a-sorted-array/","title":"有序数组的平方"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>移除元素 | a东的博客</title>
+<title>有序数组的平方 | a东的博客</title>
   
 
 
@@ -120,7 +120,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0"><span class="nav-number">1.</span> <span class="nav-text">移除元素</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="nav-number">1.1.</span> <span class="nav-text">解题思路</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9A%B4%E5%8A%9B%E6%B1%82%E8%A7%A3%E6%B3%95"><span class="nav-number">1.1.1.</span> <span class="nav-text">暴力求解法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="nav-number">1.2.</span> <span class="nav-text">复杂度分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%8C%E6%8C%87%E9%92%88%E6%B3%95"><span class="nav-number">1.2.1.</span> <span class="nav-text">双指针法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90-1"><span class="nav-number">1.3.</span> <span class="nav-text">复杂度分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">2.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E5%B9%B3%E6%96%B9"><span class="nav-number">1.</span> <span class="nav-text">有序数组的平方</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="nav-number">1.1.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="nav-number">1.2.</span> <span class="nav-text">复杂度分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">2.</span> <span class="nav-text">参考</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -184,7 +184,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://syuanyuan.com/2022/02/19/algorithm/array/remove-element/">
+    <link itemprop="mainEntityOfPage" href="https://syuanyuan.com/2022/02/19/algorithm/array/squares-of-a-sorted-array/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/logo.svg">
@@ -197,7 +197,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          移除元素
+          有序数组的平方
         </h1>
 
         <div class="post-meta-container">
@@ -209,7 +209,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2022-02-19 00:00:00 / 修改时间：21:09:02" itemprop="dateCreated datePublished" datetime="2022-02-19T00:00:00+08:00">2022-02-19</time>
+      <time title="创建时间：2022-02-19 00:00:00 / 修改时间：23:01:59" itemprop="dateCreated datePublished" datetime="2022-02-19T00:00:00+08:00">2022-02-19</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -222,7 +222,7 @@
     </span>
 
   
-    <span id="/2022/02/19/algorithm/array/remove-element/" class="post-meta-item leancloud_visitors" data-flag-title="移除元素" title="阅读次数">
+    <span id="/2022/02/19/algorithm/array/squares-of-a-sorted-array/" class="post-meta-item leancloud_visitors" data-flag-title="有序数组的平方" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -238,48 +238,25 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="移除元素">移除元素</h2>
-<p>给你一个数组 nums和一个值 val，你需要 原地
-移除所有数值等于val的元素，并返回移除后数组的新长度。</p>
-<p>不要使用额外的数组空间，你必须仅使用 O(1) 额外空间并 原地
-修改输入数组。</p>
-<p>元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。</p>
-<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/remove-element/">leetcode
+        <h2 id="有序数组的平方">有序数组的平方</h2>
+<p>给你一个按 非递减顺序 排序的整数数组 nums，返回 每个数字的平方
+组成的新数组，要求也按 非递减顺序 排序。</p>
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/move-zeroes/">leetcode
 题目链接</a></p>
-<p>示例1 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [3,2,2,3], val = 3</span><br><span class="line">输出：2, nums = [2,2]</span><br><span class="line">解释：函数应该返回新的长度 2, 并且 nums 中的前两个元素均为 2。你不需要考虑数组中超出新长度后面的元素。例如，函数返回的新长度为 2 ，而 nums = [2,2,3,3] 或 nums = [2,2,0,0]，也会被视作正确答案。  </span><br></pre></td></tr></table></figure></p>
-<p>示例2 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [0,1,2,2,3,0,4,2], val = 2</span><br><span class="line">输出：5, nums = [0,1,4,0,3]</span><br><span class="line">解释：函数应该返回新的长度 5, 并且 nums 中的前五个元素为 0, 1, 3, 0, 4。注意这五个元素可为任意顺序。你不需要考虑数组中超出新长度后面的元素。</span><br></pre></td></tr></table></figure> <span id="more"></span></p>
+<p>示例1 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [-4,-1,0,3,10]</span><br><span class="line">输出：[0,1,9,16,100]</span><br><span class="line">解释：平方后，数组变为 [16,1,0,9,100]，排序后，数组变为 [0,1,9,16,100]</span><br></pre></td></tr></table></figure></p>
+<p>示例2 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [-7,-3,2,3,11]</span><br><span class="line">输出：[4,9,9,49,121]</span><br></pre></td></tr></table></figure> <span id="more"></span></p>
 <h3 id="解题思路">解题思路</h3>
-<h4 id="暴力求解法">暴力求解法</h4>
-<p>首先考虑暴力求解法，因为数组在存储空间是连续的，因此移除数组中的一个元素只能通过将该元素后面的数据依次向左移一位，移除一个元素的时间复杂度为
-<code>O(n)</code> 。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">func removeElement(nums []int, val int) int &#123;</span><br><span class="line">    size := len(nums)</span><br><span class="line">    for i := 0; i &lt; size; i++ &#123;</span><br><span class="line">        if nums[i] == val &#123;</span><br><span class="line">            for j := i; j &lt; size-1; j++ &#123;</span><br><span class="line">                nums[j] = nums[j+1]</span><br><span class="line">            &#125;</span><br><span class="line">            size = size - 1</span><br><span class="line">            i = i - 1  // 可能移动过来的值仍然等于 val，需要再次处理</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return size</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>暴力求解法的思路比较清晰，需要注意边界条件以及移除一个元素后移动过来的元素仍然等于
-<code>val</code> 的情况，此时记得将 <code>i-1</code>
-再次判断处理即可。</p>
+<p>因为数组是有序的，且可能存在负数则平方后负数的平方值可能被放大成为最大元素，所以平方的最大值为第一个元素的平方或最后一个元素的平方，同理可以求得第二大的平方数。因此我们采用从数组两端逼近的方式每次求剩余数组中平方最大的值，然后压入结果数组的尾端。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">func sortedSquares(nums []int) []int &#123;</span><br><span class="line">    left := 0</span><br><span class="line">    right := len(nums) - 1</span><br><span class="line">    cur := len(nums) - 1</span><br><span class="line">    res := make([]int, len(nums))</span><br><span class="line">    for left &lt;= right &#123;</span><br><span class="line">        if nums[left] * nums[left] &gt;= nums[right] * nums[right] &#123;</span><br><span class="line">            res[cur] = nums[left] * nums[left]</span><br><span class="line">            left = left + 1</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            res[cur] =  nums[right] * nums[right]</span><br><span class="line">            right = right - 1</span><br><span class="line">        &#125;</span><br><span class="line">        cur = cur - 1</span><br><span class="line">    &#125;</span><br><span class="line">    return res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="复杂度分析">复杂度分析</h3>
 <ul>
-<li>时间复杂度：O(n^2)，其中 n 是数组的长度。</li>
-<li>空间复杂度：O(1)。</li>
-</ul>
-<h4 id="双指针法">双指针法</h4>
-<p>双指针是处理数组问题中一种比较常见的算法，它的好处是能够帮助我们把一个
-O(n^2) 的算法优化到 O(n)。我们指定 <code>slow</code> 和
-<code>fast</code> 2个指针，<code>fast</code> 遍历数组，每次找到不等于
-<code>val</code> 的元素则赋值到 <code>left</code> 指针并将
-<code>left</code> 指针向前推进。 这样遍历完一遍后 <code>[0, left]</code>
-就是移除 <code>val</code> 后剩余的数组了，我们直接返回它的长度即可。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">func removeElement2(nums []int, val int) int &#123;</span><br><span class="line">    slow := 0</span><br><span class="line">    fast := 0</span><br><span class="line">    for ; fast &lt; len(nums); fast++ &#123;</span><br><span class="line">        if nums[fast] != val &#123;</span><br><span class="line">            nums[slow] = nums[fast]</span><br><span class="line">            slow = slow + 1</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return slow</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="复杂度分析-1">复杂度分析</h3>
-<ul>
-<li>时间复杂度：O(log n)，其中 n 是数组的长度。</li>
+<li>时间复杂度：O(n)，其中 n 是数组的长度。</li>
 <li>空间复杂度：O(1)。</li>
 </ul>
 <h2 id="参考">参考</h2>
 <ul>
 <li><a
-target="_blank" rel="noopener" href="https://www.programmercarl.com/0027.%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0.html#_27-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0">代码随想录</a></li>
-<li><a
-target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/remove-element/solution/yi-chu-yuan-su-by-leetcode-solution-svxi/">leetcode
+target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/squares-of-a-sorted-array/solution/you-xu-shu-zu-de-ping-fang-by-leetcode-solution/">leetcode
 题解</a></li>
 </ul>
 
@@ -298,13 +275,13 @@ target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/remove-ele
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2022/02/19/algorithm/array/squares-of-a-sorted-array/" rel="prev" title="有序数组的平方">
-                  <i class="fa fa-chevron-left"></i> 有序数组的平方
+                <a href="/2022/02/17/algorithm/array/find-first-and-last-position-of-element-in-sorted-array/" rel="prev" title="在排序数组中查找元素的第一个和最后一个位置">
+                  <i class="fa fa-chevron-left"></i> 在排序数组中查找元素的第一个和最后一个位置
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2022/02/19/algorithm/array/remove-duplicates-from-sorted-array/" rel="next" title="删除有序数组中的重复项">
-                  删除有序数组中的重复项 <i class="fa fa-chevron-right"></i>
+                <a href="/2022/02/19/algorithm/array/remove-element/" rel="next" title="移除元素">
+                  移除元素 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
