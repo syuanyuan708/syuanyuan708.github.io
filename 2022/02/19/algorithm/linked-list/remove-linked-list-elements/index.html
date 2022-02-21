@@ -20,29 +20,28 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"syuanyuan.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.10.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-  <meta name="description" content="最小覆盖子串 给你一个字符串 s 、一个字符串 t 。返回 s 中涵盖 t 所有字符的最小子串。如果 s 中不存在涵盖 t 所有字符的子串，则返回空字符串 &quot;&quot; 。 leetcode 题目链接 示例1 12输入：s &#x3D; &quot;ADOBECODEBANC&quot;, t &#x3D; &quot;ABC&quot;输出：&quot;BANC&quot; 示例2 12输入：s &#x3D; &quot;a&amp;quo">
+  <meta name="description" content="移除链表元素 给你一个链表的头节点 head 和一个整数 val ，请你删除链表中所有满足 Node.val &#x3D;&#x3D; val 的节点，并返回 新的头节点 。 leetcode 题目链接 示例1  12输入：head &#x3D; [1,2,6,3,4,5,6], val &#x3D; 6输出：[1,2,3,4,5] 示例2 12输入：head &#x3D; [], val &#x3D; 1输出：[]">
 <meta property="og:type" content="website">
-<meta property="og:title" content="最小覆盖子串">
-<meta property="og:url" content="https://syuanyuan.com/2022/02/20/algorithm/array/minimum-window-substring/index.html">
+<meta property="og:title" content="移除链表元素">
+<meta property="og:url" content="https://syuanyuan.com/2022/02/19/algorithm/linked-list/remove-linked-list-elements/index.html">
 <meta property="og:site_name" content="a东的博客">
-<meta property="og:description" content="最小覆盖子串 给你一个字符串 s 、一个字符串 t 。返回 s 中涵盖 t 所有字符的最小子串。如果 s 中不存在涵盖 t 所有字符的子串，则返回空字符串 &quot;&quot; 。 leetcode 题目链接 示例1 12输入：s &#x3D; &quot;ADOBECODEBANC&quot;, t &#x3D; &quot;ABC&quot;输出：&quot;BANC&quot; 示例2 12输入：s &#x3D; &quot;a&amp;quo">
+<meta property="og:description" content="移除链表元素 给你一个链表的头节点 head 和一个整数 val ，请你删除链表中所有满足 Node.val &#x3D;&#x3D; val 的节点，并返回 新的头节点 。 leetcode 题目链接 示例1  12输入：head &#x3D; [1,2,6,3,4,5,6], val &#x3D; 6输出：[1,2,3,4,5] 示例2 12输入：head &#x3D; [], val &#x3D; 1输出：[]">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-02-19T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-02-20T14:08:36.868Z">
+<meta property="article:published_time" content="2022-02-18T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-02-21T01:47:58.040Z">
 <meta property="article:author" content="a东">
-<meta property="article:tag" content="数组">
-<meta property="article:tag" content="滑动窗口">
+<meta property="article:tag" content="链表">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://syuanyuan.com/2022/02/20/algorithm/array/minimum-window-substring/">
+<link rel="canonical" href="https://syuanyuan.com/2022/02/19/algorithm/linked-list/remove-linked-list-elements/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://syuanyuan.com/2022/02/20/algorithm/array/minimum-window-substring/","path":"2022/02/20/algorithm/array/minimum-window-substring/","title":"最小覆盖子串"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://syuanyuan.com/2022/02/19/algorithm/linked-list/remove-linked-list-elements/","path":"2022/02/19/algorithm/linked-list/remove-linked-list-elements/","title":"移除链表元素"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>最小覆盖子串 | a东的博客</title>
+<title>移除链表元素 | a东的博客</title>
   
 
 
@@ -121,7 +120,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E5%B0%8F%E8%A6%86%E7%9B%96%E5%AD%90%E4%B8%B2"><span class="nav-number">1.</span> <span class="nav-text">最小覆盖子串</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="nav-number">1.1.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="nav-number">1.2.</span> <span class="nav-text">复杂度分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">2.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A7%BB%E9%99%A4%E9%93%BE%E8%A1%A8%E5%85%83%E7%B4%A0"><span class="nav-number">1.</span> <span class="nav-text">移除链表元素</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="nav-number">1.1.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="nav-number">1.2.</span> <span class="nav-text">复杂度分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">2.</span> <span class="nav-text">参考</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -185,7 +184,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://syuanyuan.com/2022/02/20/algorithm/array/minimum-window-substring/">
+    <link itemprop="mainEntityOfPage" href="https://syuanyuan.com/2022/02/19/algorithm/linked-list/remove-linked-list-elements/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/logo.svg">
@@ -198,7 +197,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          最小覆盖子串
+          移除链表元素
         </h1>
 
         <div class="post-meta-container">
@@ -208,9 +207,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2022-02-20 00:00:00 / 修改时间：22:08:36" itemprop="dateCreated datePublished" datetime="2022-02-20T00:00:00+08:00">2022-02-20</time>
+      <time title="创建时间：2022-02-19 00:00:00" itemprop="dateCreated datePublished" datetime="2022-02-19T00:00:00+08:00">2022-02-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-02-21 09:47:58" itemprop="dateModified" datetime="2022-02-21T09:47:58+08:00">2022-02-21</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -223,7 +228,7 @@
     </span>
 
   
-    <span id="/2022/02/20/algorithm/array/minimum-window-substring/" class="post-meta-item leancloud_visitors" data-flag-title="最小覆盖子串" title="阅读次数">
+    <span id="/2022/02/19/algorithm/linked-list/remove-linked-list-elements/" class="post-meta-item leancloud_visitors" data-flag-title="移除链表元素" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -239,34 +244,37 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="最小覆盖子串">最小覆盖子串</h2>
-<p>给你一个字符串 s 、一个字符串 t 。返回 s 中涵盖 t
-所有字符的最小子串。如果 s 中不存在涵盖 t 所有字符的子串，则返回空字符串
-"" 。</p>
+        <h2 id="移除链表元素">移除链表元素</h2>
+<p>给你一个链表的头节点 <code>head</code> 和一个整数 <code>val</code>
+，请你删除链表中所有满足 <code>Node.val == val</code> 的节点，并返回
+新的头节点 。</p>
 <p><a
-target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/minimum-window-substring/">leetcode
+target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/remove-linked-list-elements/">leetcode
 题目链接</a></p>
-<p>示例1 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：s = &quot;ADOBECODEBANC&quot;, t = &quot;ABC&quot;</span><br><span class="line">输出：&quot;BANC&quot;</span><br></pre></td></tr></table></figure></p>
-<p>示例2 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：s = &quot;a&quot;, t = &quot;a&quot;</span><br><span class="line">输出：&quot;a&quot;</span><br></pre></td></tr></table></figure> <span id="more"></span></p>
-<p>示例3 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: s = &quot;a&quot;, t = &quot;aa&quot;</span><br><span class="line">输出: &quot;&quot;</span><br><span class="line">解释: t 中两个字符 &#x27;a&#x27; 均应包含在 s 的子串中，因此没有符合条件的子字符串，返回空字符串。</span><br></pre></td></tr></table></figure></p>
+<p>示例1 <img
+src="/images/algorithm/linked-list/remove-linked-list-elements.png"
+alt="链表" /> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：head = [1,2,6,3,4,5,6], val = 6</span><br><span class="line">输出：[1,2,3,4,5]</span><br></pre></td></tr></table></figure></p>
+<p>示例2 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：head = [], val = 1</span><br><span class="line">输出：[]</span><br></pre></td></tr></table></figure> <span id="more"></span></p>
+<p>示例3 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：head = [7,7,7,7], val = 7</span><br><span class="line">输出：[]</span><br></pre></td></tr></table></figure></p>
 <h3 id="解题思路">解题思路</h3>
-<p>采用滑动窗口进行处理，用2个 <code>map</code>
-存储待比较字符串的字符和对应个数，开始扩展窗口，一但满足覆盖字符串的条件则左指针开始移动来收缩窗口以寻找能满足覆盖条件的更小窗口。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">func minWindow(s string, t string) string &#123;</span><br><span class="line">    start, end := 0, 0</span><br><span class="line">    left, right := 0, 0</span><br><span class="line">    sMap, tMap := map[byte]int&#123;&#125;, map[byte]int&#123;&#125;</span><br><span class="line">    minLen := math.MaxInt32</span><br><span class="line"></span><br><span class="line">    for i := 0; i &lt; len(t); i++ &#123;</span><br><span class="line">        tMap[t[i]]++</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    for ; right &lt; len(s); right++ &#123;</span><br><span class="line">        sMap[s[right]]++</span><br><span class="line">        for isContain(sMap, tMap) &#123;</span><br><span class="line">            if right - left + 1 &lt; minLen &#123;</span><br><span class="line">                start, end = left, right</span><br><span class="line">                minLen = right - left + 1</span><br><span class="line">            &#125;</span><br><span class="line">            sMap[s[left]]--</span><br><span class="line">            left++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if minLen == math.MaxInt32 &#123;</span><br><span class="line">        return &quot;&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    return s[start:end+1]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func isContain(sMap map[byte]int, tMap map[byte]int) bool &#123;</span><br><span class="line">    for k, v := range tMap &#123;</span><br><span class="line">        if v &gt; sMap[k] &#123;</span><br><span class="line">            return false</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return true</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在链表中移除一个元素的操作 <code>cur.Next = cur.Next.Next</code>
+即可，如 <code>示例1</code> 中要移除第3个值为6的元素时 <code>cur</code>
+应该指向第2个值为2的元素。因此移除一个元素 <code>X</code> 需要 获取
+<code>X</code>
+的前一个元素，由于有可能需要移除头结点元素因此可以借助一个虚拟节点来处理边界条件。</p>
+<p>节点结构 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">type ListNode struct &#123;</span><br><span class="line">    Val  int</span><br><span class="line">    Next *ListNode</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>遍历链表移除指定元素 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">func removeElements(head *ListNode, val int) *ListNode &#123;</span><br><span class="line">    dummy := &amp;ListNode&#123;Next: head&#125; // 虚拟头结点</span><br><span class="line">    for cur := dummy; cur.Next != nil; &#123; // cur.Next == nil 时遍历完整个链表</span><br><span class="line">        if cur.Next.Val == val &#123;</span><br><span class="line">            cur.Next = cur.Next.Next</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            cur = cur.Next</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return dummy.Next</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h3 id="复杂度分析">复杂度分析</h3>
 <ul>
-<li>时间复杂度：最坏情况下左右指针对 ss 的每个元素各遍历一遍，哈希表中对
-ss 中的每个元素各插入、删除一次，对 tt
-中的元素各插入一次。每次检查是否可行会遍历整个 tt
-的哈希表，哈希表的大小与字符集的大小有关，设字符集大小为
-CC，则渐进时间复杂度为 O(C|s| + |t|)O(C⋅∣s∣+∣t∣)。</li>
-<li>空间复杂度：这里用了两张哈希表作为辅助空间，每张哈希表最多不会存放超过字符集大小的键值对，我们设字符集大小为
-CC ，则渐进空间复杂度为 O(C)O(C)。</li>
+<li>时间复杂度：O(n)，其中 n 是数组的长度。</li>
+<li>空间复杂度：O(1)。</li>
 </ul>
 <h2 id="参考">参考</h2>
 <ul>
 <li><a
-target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/minimum-window-substring/solution/zui-xiao-fu-gai-zi-chuan-by-leetcode-solution/">leetcode
+target="_blank" rel="noopener" href="https://www.programmercarl.com/0203.%E7%A7%BB%E9%99%A4%E9%93%BE%E8%A1%A8%E5%85%83%E7%B4%A0.html#%E5%85%B6%E4%BB%96%E8%AF%AD%E8%A8%80%E7%89%88%E6%9C%AC">代码随想录</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/remove-linked-list-elements/solution/yi-chu-lian-biao-yuan-su-by-leetcode-sol-654m/">leetcode
 题解</a></li>
 </ul>
 
@@ -278,21 +286,20 @@ target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/minimum-wi
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E6%95%B0%E7%BB%84/" rel="tag"># 数组</a>
-              <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" rel="tag"># 滑动窗口</a>
+              <a href="/tags/%E9%93%BE%E8%A1%A8/" rel="tag"># 链表</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2022/02/20/algorithm/array/spiral-matrix-ii/" rel="prev" title="螺旋矩阵 II">
-                  <i class="fa fa-chevron-left"></i> 螺旋矩阵 II
+                <a href="/2022/02/17/algorithm/array/find-first-and-last-position-of-element-in-sorted-array/" rel="prev" title="在排序数组中查找元素的第一个和最后一个位置">
+                  <i class="fa fa-chevron-left"></i> 在排序数组中查找元素的第一个和最后一个位置
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2022/02/20/algorithm/array/minimum-size-subarray-sum/" rel="next" title="长度最小的子数组">
-                  长度最小的子数组 <i class="fa fa-chevron-right"></i>
+                <a href="/2022/02/19/algorithm/array/squares-of-a-sorted-array/" rel="next" title="有序数组的平方">
+                  有序数组的平方 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
