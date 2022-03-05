@@ -20,31 +20,28 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"syuanyuan.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.10.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-  <meta name="description" content="反转链表 给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。 leetcode 题目链接 示例1  12输入：head &#x3D; [1,2,3,4,5]输出：[5,4,3,2,1]">
+  <meta name="description" content="有效的字母异位词 给定两个字符串 s 和 t ，编写一个函数来判断 t 是否是 s 的字母异位词。 注意：若 s 和 t 中每个字符出现的次数都相同，则称 s 和 t 互为字母异位词。 leetcode 题目链接 示例1 12输入: s &#x3D; &quot;anagram&quot;, t &#x3D; &quot;nagaram&quot;输出: true   示例2 12输入: s &#x3D; &quot;rat&amp;">
 <meta property="og:type" content="website">
-<meta property="og:title" content="反转链表">
-<meta property="og:url" content="https://syuanyuan.com/2022/02/21/algorithm/linked-list/reverse-linked-list/index.html">
+<meta property="og:title" content="有效的字母异位词">
+<meta property="og:url" content="https://syuanyuan.com/2022/03/05/algorithm/hash-table/valid-anagram/index.html">
 <meta property="og:site_name" content="a东的博客">
-<meta property="og:description" content="反转链表 给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。 leetcode 题目链接 示例1  12输入：head &#x3D; [1,2,3,4,5]输出：[5,4,3,2,1]">
+<meta property="og:description" content="有效的字母异位词 给定两个字符串 s 和 t ，编写一个函数来判断 t 是否是 s 的字母异位词。 注意：若 s 和 t 中每个字符出现的次数都相同，则称 s 和 t 互为字母异位词。 leetcode 题目链接 示例1 12输入: s &#x3D; &quot;anagram&quot;, t &#x3D; &quot;nagaram&quot;输出: true   示例2 12输入: s &#x3D; &quot;rat&amp;">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://syuanyuan.com/images/algorithm/linked-list/reverse-1.png">
-<meta property="og:image" content="https://syuanyuan.com/images/algorithm/linked-list/reverse-2.png">
-<meta property="article:published_time" content="2022-02-20T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-02-21T14:32:50.077Z">
+<meta property="article:published_time" content="2022-03-04T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-03-05T09:23:50.767Z">
 <meta property="article:author" content="a东">
-<meta property="article:tag" content="链表">
+<meta property="article:tag" content="哈希表">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://syuanyuan.com/images/algorithm/linked-list/reverse-1.png">
 
 
-<link rel="canonical" href="https://syuanyuan.com/2022/02/21/algorithm/linked-list/reverse-linked-list/">
+<link rel="canonical" href="https://syuanyuan.com/2022/03/05/algorithm/hash-table/valid-anagram/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://syuanyuan.com/2022/02/21/algorithm/linked-list/reverse-linked-list/","path":"2022/02/21/algorithm/linked-list/reverse-linked-list/","title":"反转链表"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://syuanyuan.com/2022/03/05/algorithm/hash-table/valid-anagram/","path":"2022/03/05/algorithm/hash-table/valid-anagram/","title":"有效的字母异位词"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>反转链表 | a东的博客</title>
+<title>有效的字母异位词 | a东的博客</title>
   
 
 
@@ -123,7 +120,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8"><span class="nav-number">1.</span> <span class="nav-text">反转链表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="nav-number">1.1.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="nav-number">1.2.</span> <span class="nav-text">复杂度分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">2.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%E6%95%88%E7%9A%84%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D"><span class="nav-number">1.</span> <span class="nav-text">有效的字母异位词</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="nav-number">1.1.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="nav-number">1.2.</span> <span class="nav-text">复杂度分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">2.</span> <span class="nav-text">参考</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -187,7 +184,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://syuanyuan.com/2022/02/21/algorithm/linked-list/reverse-linked-list/">
+    <link itemprop="mainEntityOfPage" href="https://syuanyuan.com/2022/03/05/algorithm/hash-table/valid-anagram/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/logo.svg">
@@ -200,7 +197,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          反转链表
+          有效的字母异位词
         </h1>
 
         <div class="post-meta-container">
@@ -212,7 +209,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2022-02-21 00:00:00 / 修改时间：22:32:50" itemprop="dateCreated datePublished" datetime="2022-02-21T00:00:00+08:00">2022-02-21</time>
+      <time title="创建时间：2022-03-05 00:00:00 / 修改时间：17:23:50" itemprop="dateCreated datePublished" datetime="2022-03-05T00:00:00+08:00">2022-03-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -225,7 +222,7 @@
     </span>
 
   
-    <span id="/2022/02/21/algorithm/linked-list/reverse-linked-list/" class="post-meta-item leancloud_visitors" data-flag-title="反转链表" title="阅读次数">
+    <span id="/2022/03/05/algorithm/hash-table/valid-anagram/" class="post-meta-item leancloud_visitors" data-flag-title="有效的字母异位词" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -241,35 +238,30 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="反转链表">反转链表</h2>
-<p>给你单链表的头节点 <code>head</code>
-，请你反转链表，并返回反转后的链表。</p>
-<p><a
-target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/reverse-linked-list/">leetcode
+        <h2 id="有效的字母异位词">有效的字母异位词</h2>
+<p>给定两个字符串 s 和 t ，编写一个函数来判断 t 是否是 s
+的字母异位词。</p>
+<p>注意：若 s 和 t 中每个字符出现的次数都相同，则称 s 和
+t 互为字母异位词。 <a
+target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/valid-anagram/">leetcode
 题目链接</a></p>
-<p>示例1 <img src="/images/algorithm/linked-list/reverse-1.png"
-alt="链表" /> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：head = [1,2,3,4,5]</span><br><span class="line">输出：[5,4,3,2,1]</span><br></pre></td></tr></table></figure> <span id="more"></span></p>
-<p>示例2 <img src="/images/algorithm/linked-list/reverse-2.png"
-alt="链表" /> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：head = [1,2]</span><br><span class="line">输出：[2,1]</span><br></pre></td></tr></table></figure></p>
-<p>示例3 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：head = []</span><br><span class="line">输出：[]</span><br></pre></td></tr></table></figure></p>
+<p>示例1 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: s = &quot;anagram&quot;, t = &quot;nagaram&quot;</span><br><span class="line">输出: true  </span><br></pre></td></tr></table></figure></p>
+<p>示例2 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: s = &quot;rat&quot;, t = &quot;car&quot;</span><br><span class="line">输出: false</span><br></pre></td></tr></table></figure> <span id="more"></span></p>
 <h3 id="解题思路">解题思路</h3>
-<p>翻转链表是链表处理中的一个常见问题，那么如何对链表进行翻转呢？首先翻转后原头节点
-<code>head</code>
-应该指向一个空节点，因此需要借助一个虚拟头节点。此外每次翻转将当前节点的
-<code>next</code>
-指向它的前一个节点后会丢失当前节点的后续节点，因此需要一个后继节点
-记录当前节点的下一个节点以便继续翻转后续的节点。</p>
-<p>节点结构 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">type ListNode struct &#123;</span><br><span class="line">    Val  int</span><br><span class="line">    Next *ListNode</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>翻转链表 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">func reverseList(head *ListNode) *ListNode &#123;</span><br><span class="line">    var p *ListNode</span><br><span class="line">    q := head</span><br><span class="line">    for q != nil &#123;</span><br><span class="line">        r := q.Next // r 节点来记录当前节点的后继节点，以实现逐步向后推动进行翻转</span><br><span class="line">        q.Next = p</span><br><span class="line">        p = q</span><br><span class="line">        q = r</span><br><span class="line">    &#125;</span><br><span class="line">    return p</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>借助 <code>hashmap</code>
+记录字符串中每个字符出现的次数，进行比对得到结果。注意第二轮比对时一但某个字符的记录数减为
+<code>0</code> 就从 <code>hashmap</code> 中删除，最后根据
+<code>hashmap</code> 的长度判断结果。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">func isAnagram(s string, t string) bool &#123;</span><br><span class="line">    if len(s) != len(t) &#123;</span><br><span class="line">        return false</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    chMap := make(map[rune]int)</span><br><span class="line">    for _, ch := range s &#123;</span><br><span class="line">        chMap[ch]++</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    for _, ch := range t &#123;</span><br><span class="line">        if chMap[ch] &gt; 0 &#123;</span><br><span class="line">            chMap[ch]--</span><br><span class="line">            if chMap[ch] == 0 &#123;</span><br><span class="line">                delete(chMap, ch)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            return false</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return len(chMap) == 0</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="复杂度分析">复杂度分析</h3>
 <ul>
-<li>时间复杂度：O(n)，其中 n 是数组的长度。</li>
-<li>空间复杂度：O(1)。</li>
+<li>时间复杂度：O(m+n)，其中 m+n 是2个字符串的长度。</li>
+<li>空间复杂度：O(m+n)。</li>
 </ul>
 <h2 id="参考">参考</h2>
 <ul>
 <li><a
-target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/reverse-linked-list/solution/fan-zhuan-lian-biao-by-leetcode-solution-d1k2/">leetcode
+target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/valid-anagram/solution/you-xiao-de-zi-mu-yi-wei-ci-by-leetcode-solution/">leetcode
 题解</a></li>
 </ul>
 
@@ -281,20 +273,20 @@ target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/reverse-li
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E9%93%BE%E8%A1%A8/" rel="tag"># 链表</a>
+              <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" rel="tag"># 哈希表</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2022/02/20/algorithm/array/fruit-into-baskets/" rel="prev" title="水果成篮">
-                  <i class="fa fa-chevron-left"></i> 水果成篮
+                <a href="/2022/02/23/algorithm/linked-list/intersection-of-two-linked-lists/" rel="prev" title="链表相交">
+                  <i class="fa fa-chevron-left"></i> 链表相交
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2022/02/22/algorithm/linked-list/swap-nodes-in-pairs/" rel="next" title="两两交换链表中的节点">
-                  两两交换链表中的节点 <i class="fa fa-chevron-right"></i>
+                <a href="/2022/03/05/algorithm/hash-table/intersection-of-two-arrays/" rel="next" title="两个数组的交集">
+                  两个数组的交集 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>

@@ -20,31 +20,28 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"syuanyuan.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.10.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-  <meta name="description" content="反转链表 给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。 leetcode 题目链接 示例1  12输入：head &#x3D; [1,2,3,4,5]输出：[5,4,3,2,1]">
+  <meta name="description" content="快乐数 编写一个算法来判断一个数 n 是不是快乐数。 「快乐数」 定义为： 对于一个正整数，每一次将该数替换为它每个位置上的数字的平方和。 然后重复这个过程直到这个数变为 1，也可能是 无限循环 但始终变不到 1。 如果这个过程 结果为 1，那么这个数就是快乐数。 如果 n 是 快乐数 就返回 true ；不是，则返回 false 。 leetcode 题目链接 示例1 1234567输入：n &#x3D;">
 <meta property="og:type" content="website">
-<meta property="og:title" content="反转链表">
-<meta property="og:url" content="https://syuanyuan.com/2022/02/21/algorithm/linked-list/reverse-linked-list/index.html">
+<meta property="og:title" content="快乐数">
+<meta property="og:url" content="https://syuanyuan.com/2022/03/05/algorithm/hash-table/happy-num/index.html">
 <meta property="og:site_name" content="a东的博客">
-<meta property="og:description" content="反转链表 给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。 leetcode 题目链接 示例1  12输入：head &#x3D; [1,2,3,4,5]输出：[5,4,3,2,1]">
+<meta property="og:description" content="快乐数 编写一个算法来判断一个数 n 是不是快乐数。 「快乐数」 定义为： 对于一个正整数，每一次将该数替换为它每个位置上的数字的平方和。 然后重复这个过程直到这个数变为 1，也可能是 无限循环 但始终变不到 1。 如果这个过程 结果为 1，那么这个数就是快乐数。 如果 n 是 快乐数 就返回 true ；不是，则返回 false 。 leetcode 题目链接 示例1 1234567输入：n &#x3D;">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://syuanyuan.com/images/algorithm/linked-list/reverse-1.png">
-<meta property="og:image" content="https://syuanyuan.com/images/algorithm/linked-list/reverse-2.png">
-<meta property="article:published_time" content="2022-02-20T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-02-21T14:32:50.077Z">
+<meta property="article:published_time" content="2022-03-04T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-03-05T10:43:25.385Z">
 <meta property="article:author" content="a东">
-<meta property="article:tag" content="链表">
+<meta property="article:tag" content="哈希表">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://syuanyuan.com/images/algorithm/linked-list/reverse-1.png">
 
 
-<link rel="canonical" href="https://syuanyuan.com/2022/02/21/algorithm/linked-list/reverse-linked-list/">
+<link rel="canonical" href="https://syuanyuan.com/2022/03/05/algorithm/hash-table/happy-num/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://syuanyuan.com/2022/02/21/algorithm/linked-list/reverse-linked-list/","path":"2022/02/21/algorithm/linked-list/reverse-linked-list/","title":"反转链表"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://syuanyuan.com/2022/03/05/algorithm/hash-table/happy-num/","path":"2022/03/05/algorithm/hash-table/happy-num/","title":"快乐数"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>反转链表 | a东的博客</title>
+<title>快乐数 | a东的博客</title>
   
 
 
@@ -123,7 +120,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8"><span class="nav-number">1.</span> <span class="nav-text">反转链表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="nav-number">1.1.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="nav-number">1.2.</span> <span class="nav-text">复杂度分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">2.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BF%AB%E4%B9%90%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">快乐数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="nav-number">1.1.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="nav-number">1.2.</span> <span class="nav-text">复杂度分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">2.</span> <span class="nav-text">参考</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -187,7 +184,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://syuanyuan.com/2022/02/21/algorithm/linked-list/reverse-linked-list/">
+    <link itemprop="mainEntityOfPage" href="https://syuanyuan.com/2022/03/05/algorithm/hash-table/happy-num/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/logo.svg">
@@ -200,7 +197,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          反转链表
+          快乐数
         </h1>
 
         <div class="post-meta-container">
@@ -212,7 +209,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2022-02-21 00:00:00 / 修改时间：22:32:50" itemprop="dateCreated datePublished" datetime="2022-02-21T00:00:00+08:00">2022-02-21</time>
+      <time title="创建时间：2022-03-05 00:00:00 / 修改时间：18:43:25" itemprop="dateCreated datePublished" datetime="2022-03-05T00:00:00+08:00">2022-03-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -225,7 +222,7 @@
     </span>
 
   
-    <span id="/2022/02/21/algorithm/linked-list/reverse-linked-list/" class="post-meta-item leancloud_visitors" data-flag-title="反转链表" title="阅读次数">
+    <span id="/2022/03/05/algorithm/hash-table/happy-num/" class="post-meta-item leancloud_visitors" data-flag-title="快乐数" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -241,35 +238,34 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="反转链表">反转链表</h2>
-<p>给你单链表的头节点 <code>head</code>
-，请你反转链表，并返回反转后的链表。</p>
-<p><a
-target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/reverse-linked-list/">leetcode
+        <h2 id="快乐数">快乐数</h2>
+<p>编写一个算法来判断一个数 n 是不是快乐数。</p>
+<p>「快乐数」 定义为：</p>
+<p>对于一个正整数，每一次将该数替换为它每个位置上的数字的平方和。
+然后重复这个过程直到这个数变为 1，也可能是 无限循环 但始终变不到 1。
+如果这个过程 结果为 1，那么这个数就是快乐数。 如果 n 是 快乐数 就返回
+true ；不是，则返回 false 。 <a
+target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/happy-number/">leetcode
 题目链接</a></p>
-<p>示例1 <img src="/images/algorithm/linked-list/reverse-1.png"
-alt="链表" /> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：head = [1,2,3,4,5]</span><br><span class="line">输出：[5,4,3,2,1]</span><br></pre></td></tr></table></figure> <span id="more"></span></p>
-<p>示例2 <img src="/images/algorithm/linked-list/reverse-2.png"
-alt="链表" /> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：head = [1,2]</span><br><span class="line">输出：[2,1]</span><br></pre></td></tr></table></figure></p>
-<p>示例3 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：head = []</span><br><span class="line">输出：[]</span><br></pre></td></tr></table></figure></p>
+<p>示例1 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入：n = 19</span><br><span class="line">输出：true</span><br><span class="line">解释：</span><br><span class="line">12 + 92 = 82</span><br><span class="line">82 + 22 = 68</span><br><span class="line">62 + 82 = 100</span><br><span class="line">12 + 02 + 02 = 1</span><br></pre></td></tr></table></figure> <span id="more"></span> 示例2 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：n = 2</span><br><span class="line">输出：false</span><br></pre></td></tr></table></figure></p>
 <h3 id="解题思路">解题思路</h3>
-<p>翻转链表是链表处理中的一个常见问题，那么如何对链表进行翻转呢？首先翻转后原头节点
-<code>head</code>
-应该指向一个空节点，因此需要借助一个虚拟头节点。此外每次翻转将当前节点的
-<code>next</code>
-指向它的前一个节点后会丢失当前节点的后续节点，因此需要一个后继节点
-记录当前节点的下一个节点以便继续翻转后续的节点。</p>
-<p>节点结构 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">type ListNode struct &#123;</span><br><span class="line">    Val  int</span><br><span class="line">    Next *ListNode</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>翻转链表 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">func reverseList(head *ListNode) *ListNode &#123;</span><br><span class="line">    var p *ListNode</span><br><span class="line">    q := head</span><br><span class="line">    for q != nil &#123;</span><br><span class="line">        r := q.Next // r 节点来记录当前节点的后继节点，以实现逐步向后推动进行翻转</span><br><span class="line">        q.Next = p</span><br><span class="line">        p = q</span><br><span class="line">        q = r</span><br><span class="line">    &#125;</span><br><span class="line">    return p</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>按照快乐数的规则对给定的数 <code>n</code>
+进行运算，如何运算过程中出现结果为 <code>1</code>
+那么这个数就是快乐数，如果运算过程中出现了值为 <code>n</code>
+的结果那运算过程就会不断重复，这个数就不是快乐数。对于过程中是否出现结果等于
+<code>n</code> 的运算可以使用 <code>hashmap</code>
+来记录每次运算得到的结果。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">func isHappy(n int) bool &#123;</span><br><span class="line">    happyMap := make(map[int]bool)</span><br><span class="line"></span><br><span class="line">    for &#123;</span><br><span class="line">        res := powSum(n)</span><br><span class="line">        if res == 1 &#123;</span><br><span class="line">            return true</span><br><span class="line">        &#125;</span><br><span class="line">        if happyMap[res] &#123;</span><br><span class="line">            return false</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            happyMap[res] = true</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        n = res</span><br><span class="line">    &#125;</span><br><span class="line">    return false</span><br><span class="line">&#125;</span><br><span class="line">// 计算下一个数</span><br><span class="line">func powSum(n int) int &#123;</span><br><span class="line">    res := 0</span><br><span class="line">    for n != 0 &#123;</span><br><span class="line">        res += (n % 10)*(n % 10)</span><br><span class="line">        n = n / 10</span><br><span class="line">    &#125;</span><br><span class="line">    return res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="复杂度分析">复杂度分析</h3>
 <ul>
-<li>时间复杂度：O(n)，其中 n 是数组的长度。</li>
-<li>空间复杂度：O(1)。</li>
+<li>时间复杂度：O(log n)，其中 n 是给定整数的位数，每一轮的计算代价为
+log n 具体计算可以参考 leetcode。</li>
+<li>空间复杂度：O(log n)，与时间复杂度对应，每一轮需要空间 O(1)。</li>
 </ul>
 <h2 id="参考">参考</h2>
 <ul>
 <li><a
-target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/reverse-linked-list/solution/fan-zhuan-lian-biao-by-leetcode-solution-d1k2/">leetcode
+target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/happy-number/solution/kuai-le-shu-by-leetcode-solution/">leetcode
 题解</a></li>
 </ul>
 
@@ -281,21 +277,18 @@ target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/reverse-li
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E9%93%BE%E8%A1%A8/" rel="tag"># 链表</a>
+              <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" rel="tag"># 哈希表</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2022/02/20/algorithm/array/fruit-into-baskets/" rel="prev" title="水果成篮">
-                  <i class="fa fa-chevron-left"></i> 水果成篮
+                <a href="/2022/03/05/algorithm/hash-table/intersection-of-two-arrays/" rel="prev" title="两个数组的交集">
+                  <i class="fa fa-chevron-left"></i> 两个数组的交集
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2022/02/22/algorithm/linked-list/swap-nodes-in-pairs/" rel="next" title="两两交换链表中的节点">
-                  两两交换链表中的节点 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
