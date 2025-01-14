@@ -1,0 +1,787 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="陶渊小明">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="前言如果你正在计划搭建一个博客，或者是个人网站，那一个稳定的图床是必不可少的。那么什么是图床呢？  图床是这样一个东西：  你把博客中需要用到的图片，上传到图床（有OSS存储）。然后图床会给你上传的每张图片，都生成一个网址。这样你就可以在自己的博客中，使用这些网址来加载需要的图片了。     当前图床的实现方案有很多种，有免费的公共图床、使用 GitHub 仓库作为图床、自建图床、直接嵌入 Mar">
+<meta property="og:type" content="article">
+<meta property="og:title" content="个人图床最佳方案：Cloudflare R2+PicGo">
+<meta property="og:url" content="https://syuanyuan708-github-io.pages.dev/2025/01/12/cloudflare%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A/index.html">
+<meta property="og:site_name" content="陶渊小明">
+<meta property="og:description" content="前言如果你正在计划搭建一个博客，或者是个人网站，那一个稳定的图床是必不可少的。那么什么是图床呢？  图床是这样一个东西：  你把博客中需要用到的图片，上传到图床（有OSS存储）。然后图床会给你上传的每张图片，都生成一个网址。这样你就可以在自己的博客中，使用这些网址来加载需要的图片了。     当前图床的实现方案有很多种，有免费的公共图床、使用 GitHub 仓库作为图床、自建图床、直接嵌入 Mar">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tyxiaoming.top/%E5%9B%BE%E5%BA%8A/%E5%B0%81%E9%9D%A2.jpeg">
+<meta property="article:published_time" content="2025-01-12T14:50:02.000Z">
+<meta property="article:modified_time" content="2025-01-14T06:14:06.417Z">
+<meta property="article:author" content="陶渊小明">
+<meta property="article:tag" content="工具教程">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://tyxiaoming.top/%E5%9B%BE%E5%BA%8A/%E5%B0%81%E9%9D%A2.jpeg">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>个人图床最佳方案：Cloudflare R2+PicGo - 陶渊小明</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/indeximg-hover.css">
+<link rel="stylesheet" href="/css/custom.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"syuanyuan708-github-io.pages.dev","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>陶渊小明</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/spacex.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="个人图床最佳方案：Cloudflare R2+PicGo"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-01-12 22:50" pubdate>
+          2025年1月12日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          22 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">个人图床最佳方案：Cloudflare R2+PicGo</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>如果你正在计划搭建一个博客，或者是个人网站，那一个稳定的图床是必不可少的。那么什么是图床呢？<br><br></p>
+<blockquote>
+<p>图床是这样一个东西：</p>
+<blockquote>
+<p>你把博客中需要用到的图片，上传到图床（有OSS存储）。然后图床会给你上传的每张图片，都生成一个网址。这样你就可以在自己的博客中，使用这些网址来加载需要的图片了。 </p>
+</blockquote>
+</blockquote>
+<br>
+当前图床的实现方案有很多种，有免费的公共图床、使用 GitHub 仓库作为图床、自建图床、直接嵌入 Markdown 文档等多种方式。下面的表格，分析对比了各种方案的优缺点，和它们适用的场景。大家可以根据自己的使用需，要来选择使用。没有最好的方案，只有最合适的方案。    
+<br></br>
+比如你只是想发发文章，记录下自己的技术经验。那直接使用微信公众号，这种现成的平台，也是一个不错的选择。<font color="#00A2FF"><i>但是如果你想，搭建一个自己的网站，拥有一片属于自己的小天地。那我强烈建议你，搭建一个属于自己的图床，在这里你将拥有最大的自主权！Let's go!🏂🏂🏂</i></font>  
+<br></br>
+
+<table>
+<thead>
+<tr>
+<th><strong>方案</strong></th>
+<th><strong>优点</strong></th>
+<th><strong>缺点</strong></th>
+<th><strong>适用场景</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>公共图床</strong></td>
+<td>操作简便，支持外链且通常免费</td>
+<td>有流量限制，有跑路风险</td>
+<td>普通用户轻量级的图片发布，例如文章配图</td>
+</tr>
+<tr>
+<td><strong>云存储服务</strong></td>
+<td>服务稳定可靠，CDN 提供较快的访问速度</td>
+<td>可能涉及收费，配置较为复杂</td>
+<td>对存储性能和访问速度，有一定要求</td>
+</tr>
+<tr>
+<td><strong>GitHub 仓库</strong></td>
+<td>存储免费可靠，支持版本控制，适合技术博客</td>
+<td>国内访问速度慢，非开发人员上手有一定难度</td>
+<td>技术博客、公开技术文档或代码仓库</td>
+</tr>
+<tr>
+<td><strong>自建图床</strong></td>
+<td>完全控制图片存储，可以长期保留数据</td>
+<td>需要服务器和技术支持，前期可能比较耗时</td>
+<td>长期内容创作或对稳定性要求较高的用户</td>
+</tr>
+<tr>
+<td><strong>直接嵌入 Markdown</strong></td>
+<td>图片与文档一起存储，无需依赖外部链接</td>
+<td>会导致文件体积增大，加载速度较慢，不适合大量图片存储</td>
+<td>少量图片的 Markdown 文档</td>
+</tr>
+<tr>
+<td><strong>目标平台存储</strong></td>
+<td>使用简便，平台自动处理图片存储</td>
+<td>不支持跨平台，迁移时需要重新上传</td>
+<td>特定平台，公众号、知乎等</td>
+</tr>
+</tbody></table>
+<h1 id="需要提前准备的"><a href="#需要提前准备的" class="headerlink" title="需要提前准备的"></a>需要提前准备的</h1><p>要使用 Cloudflare R2 和 PicGo 搭建一个免费图床，我们需要提前准备的东西包括：</p>
+<ol>
+<li>一个提前注册好的 Cloudflare 账号，并添加一个付费计划<ul>
+<li>不必担心扣费，可以选择0元免费计划</li>
+</ul>
+</li>
+<li>一个提前注册好的域名，可以选便宜一些的<ul>
+<li>域名后缀无所谓，只是作为图片网址使用</li>
+<li>如果不想花一年十几块的域名费，也可以去网上找免费的域名使用</li>
+</ul>
+</li>
+</ol>
+<h1 id="搭建图床"><a href="#搭建图床" class="headerlink" title="搭建图床"></a>搭建图床</h1><p>下面我们就来开始，使用 Cloudflare R2 和 PicGo 搭建一个免费图床。</p>
+<h2 id="1-Cloudflare-R2-配置"><a href="#1-Cloudflare-R2-配置" class="headerlink" title="1. Cloudflare R2 配置"></a>1. Cloudflare R2 配置</h2><p>打开 Cloudflare 网站，在左侧导航栏中，找到 R2 对象存储，点击打开。可以看到这里的介绍：Cloudflare R2 对象存储，给我们提供了10G的免费存储空间，这对个人网站来说，已经足够使用了。而且就算超出这个限额，续费也才大约1角钱&#x2F;G，相比于其它云存储产品，可以说是相当划算的。<br><br>此外，Cloudflare 每个月可以免费写入的次数，为100万次，可以免费读取的次数，为1000万次，这对于个人网站也是完全够用的。<br><img src="https://tyxiaoming.top/%E5%9B%BE%E5%BA%8A/R2%E4%BB%8B%E7%BB%8D.png" srcset="/img/loading.gif" lazyload alt="Cloudflare R2" width="700" /><br>点击下面这个 ”将R2订阅添加到我的账户“，然后在这个页面，点击创建存储桶。存储桶的名称，自己定义一个就行。然后位置这里，可以根据自己网站的，主要用户所在的地区，来就近选择。<br><br>比如，我要搭建的博客，主要面向亚洲用户。位置这里，我就可以选择亚太地区。其它配置都不用管，保持默认就可以了。然后点击创建，这样一个存储桶就创建OK了！<br><img src="https://tyxiaoming.top/%E5%9B%BE%E5%BA%8A/%E5%88%9B%E5%BB%BA%E5%AD%98%E5%82%A8%E6%A1%B6.png" srcset="/img/loading.gif" lazyload alt="存储桶" width="700" /><br>但是现在我们这个 blog 存储桶，还无法通过公共 URL 来访问，需要进行一步的设置。点击 blog 存储桶右侧的设置选项，向下划，找到 R2.dev 子域配置项。点击允许访问，在弹框中，根据提示输入 allow，然后点击允许。等设置生效后，就可以通过公共 URL 来访问 blog 存储桶了。<br><img src="https://tyxiaoming.top/%E5%9B%BE%E5%BA%8A/%E5%AD%98%E5%82%A8%E6%A1%B6%E5%88%9B%E5%BB%BA%E5%AE%8C%E6%88%90.png" srcset="/img/loading.gif" lazyload alt="上传文件" width="700" /><br>返回到存储桶的对象页面，从本地拖一张进来，上传上去。<br><img src="https://tyxiaoming.top/%E5%9B%BE%E5%BA%8A/%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87.png" srcset="/img/loading.gif" lazyload alt="上传成功" width="700" /><br>上传成功后，点击打开图片。就会看到 R2 给我们生成的图片网址，使用这个网址，就可以访问对应的图片了。<br><img src="https://tyxiaoming.top/%E5%9B%BE%E5%BA%8A/%E5%9B%BE%E7%89%87%E7%BD%91%E5%9D%80.png" srcset="/img/loading.gif" lazyload alt="图片网址" width="700" /><br>最后把图片的网址，放到浏览器打开试一下，看一下能否正常加载出来。<em><strong>注意使用 Cloudflare R2 搭建的图床，国内&#x2F;国外网络都能访问！</strong></em><br><img src="https://tyxiaoming.top/%E5%9B%BE%E5%BA%8A/%E6%89%93%E5%BC%80%E5%9B%BE%E7%89%87.png" srcset="/img/loading.gif" lazyload alt="浏览器打开图片" width="700" /></p>
+<h2 id="2-域名托管到-Cloudflare"><a href="#2-域名托管到-Cloudflare" class="headerlink" title="2. 域名托管到 Cloudflare"></a>2. 域名托管到 Cloudflare</h2><p>接下来我们要使用自己的域名，替换掉 Cloudflare R2 给我们分配的域名，实现自定义域名。要实现自定义域名，我们需要先把自己的域名，托管到 Cloudflare 才行。在 Cloudflare 的左侧导航栏，点击网站选项。然后在现有域这里，填上我们自己的域名。<br><img src="https://tyxiaoming.top/%E5%9B%BE%E5%BA%8A/%E5%A1%AB%E5%86%99%E5%9F%9F%E5%90%8D.png" srcset="/img/loading.gif" lazyload alt="添加域名" width="700" /><br>点击继续，付费计划选择最下面的免费计划，接着点击继续，然后选择继续前往激活，弹框这里直接选择确认。<br><img src="https://tyxiaoming.top/%E5%9B%BE%E5%BA%8A/%E5%85%8D%E8%B4%B9%E8%AE%A1%E5%88%92.png" srcset="/img/loading.gif" lazyload alt="选择免费计划" width="700" /><br>然后向下划，找到3.更新名称服务器。这里生成了2个名称服务器网址，把这2个网址复制下来，等下会用到。<br><img src="https://tyxiaoming.top/%E5%9B%BE%E5%BA%8A/2%E4%B8%AA%E7%BD%91%E5%9D%80.png" srcset="/img/loading.gif" lazyload alt="生成的网址" width="700" /><br>我的域名是在阿里云购买的，这里就用阿里云做演示，其他云平台的操作也都差不多。打开阿里云的控制台，然后在左侧导航栏找到域名选项，再继续选择域名列表。在右侧点击管理，接着点击 DNS 修改，选择修改 DNS 服务器。然后把 Cloudflare 上那2个名称服务器网址配置就去就可以了。<br><img src="https://tyxiaoming.top/%E5%9B%BE%E5%BA%8A/%E9%85%8D%E7%BD%AE%E7%BD%91%E5%9D%80.png" srcset="/img/loading.gif" lazyload alt="配置2个网址" width="700" /><br>配置完成以后，回到 Cloudflare，现在域名的托管状态，还在等待处理中。等一段时间，域名状态变成活动以后，域名就成功从阿里云托管到 Cloudflare 了。<br><img src="https://tyxiaoming.top/%E5%9B%BE%E5%BA%8A/%E6%89%98%E7%AE%A1%E6%88%90%E5%8A%9F.png" srcset="/img/loading.gif" lazyload alt="域名托管成功" width="700" /></p>
+<h2 id="3-Cloudflare-R2-自定义域名"><a href="#3-Cloudflare-R2-自定义域名" class="headerlink" title="3. Cloudflare R2 自定义域名"></a>3. Cloudflare R2 自定义域名</h2><p>现在域名已经托管到 Cloudflare 了，接下来我们用这个域名，替换 Cloudflare R2 分配的域名。打开我们创建的 blog 存储桶，点击右侧的设置选项。向下划，找到自定义域，点击连接域，然后输入我们的域名就可以了。等一段时间刷新页面，就可以看到自定义域名已经生效了。<br><img src="https://tyxiaoming.top/%E5%9B%BE%E5%BA%8A/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F.png" srcset="/img/loading.gif" lazyload alt="实现自定义域" width="700" /><br>然后我们再打开 blog 存储桶中的图片，可以看到除了原来的那个网址，还给我们生成了一个自定义域名的网址，这2个网址都可以用来访问图片。<br><img src="https://tyxiaoming.top/%E5%9B%BE%E5%BA%8A/%E6%96%B0%E7%BD%91%E5%9D%80.png" srcset="/img/loading.gif" lazyload alt="新的图片网址" width="700" /></p>
+<h2 id="4-PicGo-安装配置"><a href="#4-PicGo-安装配置" class="headerlink" title="4. PicGo 安装配置"></a>4. PicGo 安装配置</h2><p>到这里一个可用的图床，就已经基本搭建完成了。但是 Cloudflare 自带的图片上传功能比较简陋，这里给大家推荐一个开源工具 PicGo。 <a target="_blank" rel="noopener" href="https://picgo.github.io/PicGo-Doc/zh/guide/#%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85">点击下载</a></p>
+<blockquote>
+<p>PicGo 是一个用来上传图片，并获得图片网址的开源工具</p>
+</blockquote>
+<p>安装完成后，打开 PicGo，首先需要安装一个 S3 插件。点击插件设置，搜索 S3，选择安装这个 s3-lls 插件。如果安装失败，可以重启 PicGo 再重新尝试安装。<br><img src="https://tyxiaoming.top/%E5%9B%BE%E5%BA%8A/S3.png" srcset="/img/loading.gif" lazyload alt="安装S3插件" width="500" /><br>安装完插件，打开左侧的图床设置，找到 Amazon S3 然后编辑默认设置。下面来分别介绍这些配置项：<br><img src="https://tyxiaoming.top/%E5%9B%BE%E5%BA%8A/picgo%20-%20%E9%85%8D%E7%BD%AE.png" srcset="/img/loading.gif" lazyload alt="S3参数配置" width="500" /></p>
+<blockquote>
+<p>设置名称，自定义一个就可以。</p>
+</blockquote>
+<blockquote>
+<p>应用秘钥ID和应用秘钥，需要从cloudflare网站获取。在 Cloudflare 网站，点击左侧导航栏中的R2对象存储，选择概述选项。然后点击API按钮，选择管理API令牌，再点击创建API令牌。自定义一个令牌名，权限这里，选择读对象和写，最后点击创建API令牌。创建完成后，在 S3 客户端配置项下面，就给我们生成了 ID 和秘钥，把它们分别填入 PicGo 中就行了。<br><img src="https://tyxiaoming.top/%E5%9B%BE%E5%BA%8A/ID%E7%A7%98%E9%92%A5.png" srcset="/img/loading.gif" lazyload alt="生成ID和秘钥" width="700" /></p>
+</blockquote>
+<blockquote>
+<p>桶这里填入我们创建的，存储桶的名字 blog.</p>
+</blockquote>
+<blockquote>
+<p>文件路径这里，填入 PicGo 加全文件名。这样通过 PicGo 上传的图片，都会统一放到 blog 存储桶下面，一个叫 PicGo 的文件夹中。</p>
+</blockquote>
+<blockquote>
+<p>权限保持默认</p>
+</blockquote>
+<blockquote>
+<p>地区填入auto，或者我们在创建存储桶时，选择的地区。</p>
+</blockquote>
+<blockquote>
+<p>自定义节点，需要从 Cloudflare 网站获取。在 Cloudflare 网站，点击左侧导航栏中的R2对象存储，选择概述选项。点击API按钮，选择第一项通过 API 来使用 R2 存储。点击复制下面的 https 网址，粘贴到 PicGo 中就可以了。<br><img src="https://tyxiaoming.top/%E5%9B%BE%E5%BA%8A/API%E7%BD%91%E5%9D%80.png" srcset="/img/loading.gif" lazyload alt="获取子域网址" width="700" /></p>
+</blockquote>
+<blockquote>
+<p>自定义域名，填写我们托管到 Cloudflare 的域名。</p>
+</blockquote>
+<h1 id="图床效果"><a href="#图床效果" class="headerlink" title="图床效果"></a>图床效果</h1><p>配置完成后就可以用 PicGo 上传图片了，点击左侧的上传区，把图片拖进来就行。然后点击左侧的相册，可以查看已上传的图片。在每张图片的左下角，都有一个复制按钮，点击它，就可以复制到这张图片的网址。<br><br>你会发现，它还帮我们，自动转成了 Markdown 格式，这给使用 Markdown 来写文章的用户，提供了很大的方便。如果我们不需要 Markdown 格式的网址，可以点击上面这个下拉按钮，在这里可以选择，普通的 URL 或者其它格式。<br><img src="https://tyxiaoming.top/%E5%9B%BE%E5%BA%8A/%E7%BD%91%E5%9D%80%E7%9A%84%E6%A0%BC%E5%BC%8F.png" srcset="/img/loading.gif" lazyload alt="选择网址格式" width="500" /><br>最后我们把图片网址，放到 Markdown 文档中看一下，可以看到，使用完全没有问题，而且图片的加载速度也很流畅！<br><img src="https://tyxiaoming.top/%E5%9B%BE%E5%BA%8A/%E5%8D%9A%E5%AE%A2.png" srcset="/img/loading.gif" lazyload alt="使用效果" width="700" /></p>
+<h1 id="方案优势"><a href="#方案优势" class="headerlink" title="方案优势"></a>方案优势</h1><p>图床搭建完成后，就可以直接在博客，或个人网站中使用了。那这个方案它具有以下优点：</p>
+<ol>
+<li>免费，Cloudflare R2 存储，为我们提供了足够使用的免费额度</li>
+<li>服务稳定，不需要担心服务商跑路的问题</li>
+<li>不存在网络环境限制，生成的图片链接，国内网络和国外网络都可以打开</li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%B7%A5%E5%85%B7%E6%95%99%E7%A8%8B/" class="print-no-link">#工具教程</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>个人图床最佳方案：Cloudflare R2+PicGo</div>
+      <div>https://syuanyuan708-github-io.pages.dev/2025/01/12/cloudflare搭建图床/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>陶渊小明</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年1月12日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/12/25/2024%E6%9C%80%E6%96%B0%E6%AC%BE%E6%89%8B%E6%9C%BA%E6%B5%8B%E8%AF%84/" title="2024最新款手机对比评测">
+                        <span class="hidden-mobile">2024最新款手机对比评测</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'syuanyuan708/syuanyuan708.github.io');
+      s.setAttribute('issue-term', 'title');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

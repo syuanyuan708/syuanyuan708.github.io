@@ -1,0 +1,26 @@
+/*INFO 段落行间距设置*/
+.post-content p {
+    letter-spacing:2px; /*文字间距为*/
+    line-height: 1.8; /*行间距为字体大小的2.5倍*/
+    margin-top: 0px; /*段前距离*/
+    margin-bottom: 0px; /*段后距离*/
+    text-align: justify; /*文本对齐方式*/
+  }
+  
+  /*INFO 下划线设置*/
+  .post-content hr {
+    height: 1px; /*将高度设为0*/
+    margin: 10px 0; /*设置间距*/
+  }
+  
+  /*INFO 内容里列表*/
+  .post-content li {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  
+  /*INFO 内容里列表*/
+  .post-content ol {
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }

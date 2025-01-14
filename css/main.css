@@ -2239,3 +2239,40 @@ input[type=checkbox] {
     margin-left: 1rem;
   }
 }
+table th {
+  font-size: 10px; /*表头字符大小*/
+  font-weight: bold; /*加粗*/
+  text-align: center; /*内容居中，加上 !important 避免被 Markdown 样式覆盖*/
+  background: rgba(158,188,226,0.2); /*背景色*/
+}
+table {
+  width: 100%; /*表格宽度*/
+  max-width: 65em; /*表格最大宽度，避免表格过宽*/
+  border: 1px solid #dedede; /*表格外边框设置*/
+  margin: 15px auto; /*外边距*/
+  border-collapse: collapse; /*使用单一线条的边框*/
+  empty-cells: show; /*单元格无内容依旧绘制边框*/
+}
+table th,
+table td {
+  height: 25px; /*统一每一行的默认高度*/
+  font-size: 15px; /*行内字符大小*/
+  border: 1px solid #dedede; /*内部边框样式*/
+  padding: 0 10px; /*内边距*/
+}
+img {
+  background-color: transparent !important; /* 去除背景颜色 */
+  border: 0px solid transparent; /* 添加透明边框 */
+  padding: 0; /* 去除内边距 */
+  margin: 0px auto; /* 图片上下间距 */
+  display: inline-block; /* 保证图片与文字并排显示 */
+  box-shadow: none !important; /* 移除阴影 */
+  vertical-align: middle; /* 使图片垂直居中 */
+}
+.post-content img {
+  background-color: transparent !important;
+  border: 0px solid transparent;
+  padding: 0;
+  margin: 0px auto; /* 图片上下间距 */
+  box-shadow: none !important;
+}
