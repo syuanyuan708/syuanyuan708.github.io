@@ -1,0 +1,686 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.jpg">
+  <link rel="icon" href="/img/icon.jpg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="陶渊小明">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="前言这是一篇8页的，英文 PDF 文档。把它放到这个本地部署的，翻译工具里面。只需要6秒，它就会把这篇英文的 PDF，翻译成中文！更厉害的是，翻译后的中文 PDF，依然保留了原来的排版样式，这样就很方便和英文 PDF 对比阅读，简直就是科研党的必备神器！而且只需要几分钟，你就可以把这套翻译工具，部署到自己电脑上，操作十分简单、使用完全免费，并且没有翻译次数的限制。 部署PDF翻译服务我们上面看到的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="免费PDF翻译神器：保留排版样式，科研党必备！3分钟完成本地部署，无限使用次数">
+<meta property="og:url" content="https://syuanyuan708-github-io.pages.dev/2025/01/22/%E5%85%8D%E8%B4%B9PDF%E7%BF%BB%E8%AF%91%E7%A5%9E%E5%99%A8%EF%BC%9A%E4%BF%9D%E7%95%99%E6%8E%92%E7%89%88%E6%A0%B7%E5%BC%8F%EF%BC%8C%E7%A7%91%E7%A0%94%E5%85%9A%E5%BF%85%E5%A4%87/index.html">
+<meta property="og:site_name" content="陶渊小明">
+<meta property="og:description" content="前言这是一篇8页的，英文 PDF 文档。把它放到这个本地部署的，翻译工具里面。只需要6秒，它就会把这篇英文的 PDF，翻译成中文！更厉害的是，翻译后的中文 PDF，依然保留了原来的排版样式，这样就很方便和英文 PDF 对比阅读，简直就是科研党的必备神器！而且只需要几分钟，你就可以把这套翻译工具，部署到自己电脑上，操作十分简单、使用完全免费，并且没有翻译次数的限制。 部署PDF翻译服务我们上面看到的">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tyxiaoming.top/PDF%E7%BF%BB%E8%AF%91/%E5%B0%81%E9%9D%A2jpeg.jpeg">
+<meta property="article:published_time" content="2025-01-22T10:02:01.000Z">
+<meta property="article:modified_time" content="2025-01-22T12:20:56.596Z">
+<meta property="article:author" content="陶渊小明">
+<meta property="article:tag" content="工具教程">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://tyxiaoming.top/PDF%E7%BF%BB%E8%AF%91/%E5%B0%81%E9%9D%A2jpeg.jpeg">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>免费PDF翻译神器：保留排版样式，科研党必备！3分钟完成本地部署，无限使用次数 - 陶渊小明</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/indeximg-hover.css">
+<link rel="stylesheet" href="/css/custom.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"syuanyuan708-github-io.pages.dev","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>陶渊小明</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/spacex.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="免费PDF翻译神器：保留排版样式，科研党必备！3分钟完成本地部署，无限使用次数"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-01-22 18:02" pubdate>
+          2025年1月22日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          11 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">免费PDF翻译神器：保留排版样式，科研党必备！3分钟完成本地部署，无限使用次数</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这是一篇8页的，英文 PDF 文档。把它放到这个本地部署的，翻译工具里面。只需要6秒，它就会把这篇英文的 PDF，翻译成中文！<br><img src="https://tyxiaoming.top/PDF%E7%BF%BB%E8%AF%91/%E7%BF%BB%E8%AF%91%E6%9C%8D%E5%8A%A1.png" srcset="/img/loading.gif" lazyload alt="PDF翻译服务" width="650" /><br>更厉害的是，翻译后的中文 PDF，依然保留了原来的排版样式，这样就很方便和英文 PDF 对比阅读，简直就是科研党的必备神器！而且只需要几分钟，你就可以把这套翻译工具，部署到自己电脑上，操作十分简单、使用完全免费，并且没有翻译次数的限制。<br><img src="https://tyxiaoming.top/PDF%E7%BF%BB%E8%AF%91/%E7%BF%BB%E8%AF%91%E6%95%88%E6%9E%9C.png" srcset="/img/loading.gif" lazyload alt="翻译效果" width="650" /></p>
+<h1 id="部署PDF翻译服务"><a href="#部署PDF翻译服务" class="headerlink" title="部署PDF翻译服务"></a>部署PDF翻译服务</h1><p>我们上面看到的翻译工具，就是这个<a target="_blank" rel="noopener" href="https://github.com/Byaidu/PDFMathTranslate"> PDFMathTranslate </a>。它是 GitHub 上的一个开源项目，下面我们就来把这套翻译工具，部署到我们自己的电脑上。我们在 readme 切换到，这个项目的中文说明文档。在这里给我们提供了一个，可以免费试用的网址。但是这个网址的服务，已经无法正常使用了，我们还是来自己部署服务。<br><img src="https://tyxiaoming.top/PDF%E7%BF%BB%E8%AF%91/%E4%BD%BF%E7%94%A8%E9%85%8D%E7%BD%AE.png" srcset="/img/loading.gif" lazyload alt="试用服务" width="650" /><br>这个 <a target="_blank" rel="noopener" href="https://github.com/Byaidu/PDFMathTranslate"> PDFMathTranslate </a>是由 Python 语言实现的，所以要使用它需要预先安装 Python 环境。而且 Python 的版本，要大于 3.8 小于 3.12。如果对 Python 不熟悉也不要紧，现在主流操作系统都内置了 Python。<br><img src="https://tyxiaoming.top/PDF%E7%BF%BB%E8%AF%91/Python%E7%89%88%E6%9C%AC.png" srcset="/img/loading.gif" lazyload alt="Python版本" width="650" /><br>向下拉，可以看到<a target="_blank" rel="noopener" href="https://github.com/Byaidu/PDFMathTranslate"> PDFMathTranslate </a>给我们提供了4种使用方式。包括命令行、便携式安装、图形界面和 docker 运行。这里我们选择图形界面的方式，来部署服务。这种部署方式，对操作系统没有限制。<br><br>不论是 Windows、macOS 还是 Linux 都可以按照，文档中的操作步骤来进行部署。可以看到，部署服务的操作很简单，只需要执行2条命令就可以了。<br><img src="https://tyxiaoming.top/PDF%E7%BF%BB%E8%AF%91/%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2.png" srcset="/img/loading.gif" lazyload alt="GUI界面安装" width="650" /><br>打开命令行窗口，执行 <code>pip install pdf2zh</code> 命令，使用pip安装pdf2zh包。安装完成后，然后执行 <code>pdf2zh -i</code>，启动翻译服务。服务启动后，浏览器会自动打开一个网页，这里就是翻译工具的GUI界面了。如果浏览器没有自动打开这个网页，可以手动，在浏览器打开本地网址<font color="#00A2FF"><i><b> <a target="_blank" rel="noopener" href="http://localhost:7860/">http://localhost:7860/</a> </b></i></font><br><img src="https://tyxiaoming.top/PDF%E7%BF%BB%E8%AF%91/%E7%BF%BB%E8%AF%91%E6%9C%8D%E5%8A%A1.png" srcset="/img/loading.gif" lazyload alt="PDF翻译服务" width="650" /></p>
+<h1 id="使用PDF翻译服务"><a href="#使用PDF翻译服务" class="headerlink" title="使用PDF翻译服务"></a>使用PDF翻译服务</h1><p>下面我们来认识下，翻译工具的 GUI，左上方是文件上传区。可以选择上传PDF文档，或者是使用PDF文档的在线网址。我们拖一个英文PDF进来，可以看到，在右侧的预览区，显示了文档的内容。<br><img src="https://tyxiaoming.top/PDF%E7%BF%BB%E8%AF%91/%E9%A2%84%E8%A7%88%E6%96%87%E6%A1%A3.png" srcset="/img/loading.gif" lazyload alt="上传区域" width="650" /><br>翻译服务这里，主要分为2类：</p>
+<ul>
+<li>一类是常用的翻译服务，比如Google翻译、微软翻译等</li>
+<li>另一类是AI翻译服务，比如Deepl、OpenAI等</li>
+</ul>
+<p>如下图所示：<br><img src="https://tyxiaoming.top/PDF%E7%BF%BB%E8%AF%91/%E7%BF%BB%E8%AF%91%E6%9C%8D%E5%8A%A1%E6%96%B9%E5%BC%8F.png" srcset="/img/loading.gif" lazyload alt="上传区域" width="650" /><br>使用AI翻译服务，只需要在这里，填上自己的 API key就可以了。经过比较，在翻译专业的学术论文方面，AI翻译比 Google、Bing 这种直译效果效果更好一些。<br><img src="https://tyxiaoming.top/PDF%E7%BF%BB%E8%AF%91/AI%E7%BF%BB%E8%AF%91.png" srcset="/img/loading.gif" lazyload alt="翻译服务方式" width="650" /><br>这里我们选择 Google 翻译来演示，翻译语言也支持很多种，包括中文、英文、日文等等。我们这里选择从英文 PDF，翻译成中文 PDF。<br><img src="https://tyxiaoming.top/PDF%E7%BF%BB%E8%AF%91/%E7%BF%BB%E8%AF%91%E8%AF%AD%E8%A8%80.png" srcset="/img/loading.gif" lazyload alt="翻译语言" width="650" /><br>再下面，它甚至还给我们提供了一个，翻译页数的选项。你可以选择翻译整个文档、翻译第一页或者是翻译前5页，我们选择翻译整个文档。我们用来翻译的这个 PDF，是一篇 AI 相关的 paper。里面有一些图表和公式，然后我们点击翻译，右侧可以看到翻译进度。<br><img src="https://tyxiaoming.top/PDF%E7%BF%BB%E8%AF%91/%E7%BF%BB%E8%AF%91%E8%BF%9B%E5%BA%A6.png" srcset="/img/loading.gif" lazyload alt="翻译进度" width="650" /><br>翻译结束了，这篇8页的 PDF 用时大概6秒，可以说速度已经很让人满意了。这是翻译后的中文，在左侧还给我们提供了2个，翻译结果的下载链接，一个 mono，一个 dual。<br><img src="https://tyxiaoming.top/PDF%E7%BF%BB%E8%AF%91/%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6.png" srcset="/img/loading.gif" lazyload alt="下载文件" width="650" /><br>我们把它下载下来，然后打开看一下。这个 mono 的 PDF，是翻译后的中文 PDF，可以看到，完全保留了原 PDF 的排版样式。而且文章内容的翻译效果也不错，这能够帮我们，节省大量的阅读时间。<br><img src="https://tyxiaoming.top/PDF%E7%BF%BB%E8%AF%91/mono.png" srcset="/img/loading.gif" lazyload alt="mono" width="650" /><br>我们再打开这个 dual 的 PDF，可以看到这个文档，是英文和中文交替的。如果想在一个文档中，进行对比阅读，就可以使用这个文档。<br><img src="https://tyxiaoming.top/PDF%E7%BF%BB%E8%AF%91/dual.png" srcset="/img/loading.gif" lazyload alt="dual" width="650" /></p>
+<p>除了上面介绍的，这种本地上传 PDF 的方式，还可以使用 PDF 的在线网址。这里有一个<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1706.03762">在线的PDF文档</a>，我们复制它的网址。然后在翻译工具这里，选择 link，把网址粘贴进去，点击翻译。这个15页的英文 PDF，用时大概15秒。可以看到，翻译后的效果也很不错。<br><img src="https://tyxiaoming.top/PDF%E7%BF%BB%E8%AF%91/%E5%9C%A8%E7%BA%BF%E7%BF%BB%E8%AF%91.png" srcset="/img/loading.gif" lazyload alt="在线翻译" width="650" /></p>
+<h1 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h1><p>上面这些，就是这个翻译工具的，本地部署和使用介绍。如果你有阅读外文 PDF 的需求，可以花几分钟，在自己电脑上部署一套，它能够帮助你节省大量的阅读时间。如果使用后，觉得这个工具还不错，还可以在 GitHub 上，给项目点一个免费的 star ✨✨✨</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%B7%A5%E5%85%B7%E6%95%99%E7%A8%8B/" class="print-no-link">#工具教程</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>免费PDF翻译神器：保留排版样式，科研党必备！3分钟完成本地部署，无限使用次数</div>
+      <div>https://syuanyuan708-github-io.pages.dev/2025/01/22/免费PDF翻译神器：保留排版样式，科研党必备/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>陶渊小明</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年1月22日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/01/21/%E6%90%AD%E5%BB%BA%E5%85%8D%E8%B4%B9%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%8D%9A%E5%AE%A2/" title="搭建免费个人博博客：Cloudflare+GitHub+Hexo Fluid">
+                        <span class="hidden-mobile">搭建免费个人博博客：Cloudflare+GitHub+Hexo Fluid</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'syuanyuan708/syuanyuan708.github.io');
+      s.setAttribute('issue-term', 'title');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
