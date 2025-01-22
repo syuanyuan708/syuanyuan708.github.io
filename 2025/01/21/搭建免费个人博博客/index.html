@@ -1,0 +1,719 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.jpg">
+  <link rel="icon" href="/img/icon.jpg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="陶渊小明">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="前言在上一篇文章，我们已经使用 Cloudflare R2 和 PicGo 搭建了一个免费图床。今天我们来继续完成，博客网站的搭建。作为一个个人博客，我们希望这个网站能够具有以下优点：  最好是免费的，不需要额外购买云服务器 维护尽量简单，我们只用它发布文章，不需要太复杂的功能 网络访问流畅，不论是国内用户还是国外用户，都能访问我们的博客   在综合考虑了上面3点要求后，我们最终选择了使用 Clo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="搭建免费个人博博客：Cloudflare+GitHub+Hexo Fluid">
+<meta property="og:url" content="https://syuanyuan708-github-io.pages.dev/2025/01/21/%E6%90%AD%E5%BB%BA%E5%85%8D%E8%B4%B9%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%8D%9A%E5%AE%A2/index.html">
+<meta property="og:site_name" content="陶渊小明">
+<meta property="og:description" content="前言在上一篇文章，我们已经使用 Cloudflare R2 和 PicGo 搭建了一个免费图床。今天我们来继续完成，博客网站的搭建。作为一个个人博客，我们希望这个网站能够具有以下优点：  最好是免费的，不需要额外购买云服务器 维护尽量简单，我们只用它发布文章，不需要太复杂的功能 网络访问流畅，不论是国内用户还是国外用户，都能访问我们的博客   在综合考虑了上面3点要求后，我们最终选择了使用 Clo">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tyxiaoming.top/%E5%8D%9A%E5%AE%A2/%E5%B0%81%E9%9D%A2.jpeg">
+<meta property="article:published_time" content="2025-01-21T14:36:30.000Z">
+<meta property="article:modified_time" content="2025-01-22T06:27:05.868Z">
+<meta property="article:author" content="陶渊小明">
+<meta property="article:tag" content="工具教程">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://tyxiaoming.top/%E5%8D%9A%E5%AE%A2/%E5%B0%81%E9%9D%A2.jpeg">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>搭建免费个人博博客：Cloudflare+GitHub+Hexo Fluid - 陶渊小明</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/indeximg-hover.css">
+<link rel="stylesheet" href="/css/custom.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"syuanyuan708-github-io.pages.dev","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>陶渊小明</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/spacex.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="搭建免费个人博博客：Cloudflare+GitHub+Hexo Fluid"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-01-21 22:36" pubdate>
+          2025年1月21日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          21 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">搭建免费个人博博客：Cloudflare+GitHub+Hexo Fluid</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在上一篇文章，我们已经使用 Cloudflare R2 和 PicGo 搭建了一个<a href="/2025/01/12/%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A">免费图床</a>。今天我们来继续完成，博客网站的搭建。作为一个个人博客，我们希望这个网站能够具有以下优点：</p>
+<ol>
+<li>最好是免费的，不需要额外购买云服务器</li>
+<li>维护尽量简单，我们只用它发布文章，不需要太复杂的功能</li>
+<li>网络访问流畅，不论是国内用户还是国外用户，都能访问我们的博客</li>
+</ol>
+<p><font color="#00A2FF"><i><b> 在综合考虑了上面3点要求后，我们最终选择了使用 Cloudflare+GitHub+Hexo Fluid 来搭建博客网站。</b></i></font></p>
+<h1 id="Hexo环境配置"><a href="#Hexo环境配置" class="headerlink" title="Hexo环境配置"></a>Hexo环境配置</h1><p>hexo 是一个快速、简洁，而且功能强大的静态博客框架。我们可以使用 Markdown 编写博客文章，然后 hexo 帮我们把 Markdown 文件渲染成静态 HTML 页面。因此 hexo 非常适合用来搭建技术类博客，以及项目文档和个人网站。</p>
+<h2 id="1-安装-Node-js"><a href="#1-安装-Node-js" class="headerlink" title="1. 安装 Node.js"></a>1. 安装 Node.js</h2><p>由于 hexo 是基于 Node.js 的，因此要安装 hexo，需要先安装 Node.js 和 npm，然后通过 npm 来安装 hexo。要安装 Node.js ，可以打开<a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn">Node.js官网</a>，下载软件然后进行安装就可以了。<br><img src="https://tyxiaoming.top/%E5%8D%9A%E5%AE%A2/nodejs%E5%AE%98%E7%BD%91.png" srcset="/img/loading.gif" lazyload alt="安装Node.js" width="700" /><br>安装这个软件，会同时安装 node 和 npm 这2个工具。安装完成以后，我们来验证一下是否安装成功了。执行下面的命令，如果能输出版本号，就代表 node 安装成功了。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">node -v<br></code></pre></td></tr></table></figure>
+
+<p>接着再执行这条命令，同样如果能输出版本号就证明 npm 也安装成功了。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm -v<br></code></pre></td></tr></table></figure>
+<h2 id="2-安装-Hexo"><a href="#2-安装-Hexo" class="headerlink" title="2. 安装 Hexo"></a>2. 安装 Hexo</h2><p>下面我们来安装 hexo，需要注意我们这里安装的是 <code>hexo客户端</code> 。安装 hexo 需要使用 npm 命令，但是在国内使用 npm 安装软件，速度很慢。因此我们先执行下面这条命令，给 npm 替换成国内的源，这样安装速度就会快很多了。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm config <span class="hljs-built_in">set</span> registry https://registry.npmmirror.com <br></code></pre></td></tr></table></figure>
+<p>接着执行下面这条命令，使用 npm 安装 hexo客户端。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install -g hexo-cli<br></code></pre></td></tr></table></figure>
+<p>安装好 hexo 以后，执行 <code>hexo init my-blog</code> 初始化 my-blog 文件夹（自定义）。这个文件夹，就是我们的博客项目，用来存放我们的全部博客文章。然后 <code>cd my-blog</code> 进入到文件夹，接着执行 <code>npm install</code> 命令安装依赖包。<br><br>到这里我们的 hexo 环境配置就基本完成了，下面就可以使用它来写文章和发布文章了！👍👍👍<br><img src="https://tyxiaoming.top/%E5%8D%9A%E5%AE%A2/%E9%85%8D%E7%BD%AEhexo.png" srcset="/img/loading.gif" lazyload alt="配置hexo" width="700" /></p>
+<h1 id="使用-Hexo-管理博客"><a href="#使用-Hexo-管理博客" class="headerlink" title="使用 Hexo 管理博客"></a>使用 Hexo 管理博客</h1><p>为了方便编辑，我们使用 vscode 打开 my-blog 文件夹。下面来看一下 my-blog 里面的主要组成部分：</p>
+<ol>
+<li>_config.yml：博客的全局配置文件，网站的名称、描述、作者等，都可以在这里进行设置</li>
+<li>source&#x2F;_post：存放我们全部的文章，而且 hexo 自带了一篇 demo 文章 hello-world</li>
+<li>themes：博客的主题配置文件，hexo 有一个默认主题，但不太好看，后面可以改成漂亮一些的主题</li>
+</ol>
+<p>上面这3部分，就是我们使用 hexo 写博客时需要重点关注的地方。<br><img src="https://tyxiaoming.top/%E5%8D%9A%E5%AE%A2/hexo%E7%BB%93%E6%9E%84.png" srcset="/img/loading.gif" lazyload alt="hexo组成" width="700" /><br>接着我们执行 <code>hexo generate</code> 和 <code>hexo server</code> 这2条命令，在本地把 hexo 服务跑起来。这样我们就可以，在本地网址的4000端口，预览文章效果。<br><img src="https://tyxiaoming.top/%E5%8D%9A%E5%AE%A2/%E5%90%AF%E5%8A%A8hexo.png" srcset="/img/loading.gif" lazyload alt="运行hexo" width="700" /><br>打开<font color="#00A2FF"><i><b> <a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000/</a> </b></i></font>这个本地网址，已经可以正常访问了，这里就是博客网页的布局。<br><img src="https://tyxiaoming.top/%E5%8D%9A%E5%AE%A2/hello-world.png" srcset="/img/loading.gif" lazyload alt="博客预览" width="700" /></p>
+<h1 id="将博客托管到-GitHub-Pages"><a href="#将博客托管到-GitHub-Pages" class="headerlink" title="将博客托管到 GitHub Pages"></a>将博客托管到 GitHub Pages</h1><p>现在我们这个博客，还只能在本地网址预览。下面我们把博客项目托管到 GitHub 仓库，并且使用 GitHub Pages 来部署博客，让其他人也能访问我们的博客网站。</p>
+<h2 id="1-博客项目托管到GitHub"><a href="#1-博客项目托管到GitHub" class="headerlink" title="1. 博客项目托管到GitHub"></a>1. 博客项目托管到GitHub</h2><p>为了方便管理 my-blog 博客项目，我们下一步把这个项目托管到 GitHub 上。首先在 GitHub 上创建一个项目，项目名可以设置为 <code>我们的GitHub用户名.github.io</code>。<br><img src="https://tyxiaoming.top/%E5%8D%9A%E5%AE%A2/%E5%88%9B%E5%BB%BAGitHub%E9%A1%B9%E7%9B%AE.png" srcset="/img/loading.gif" lazyload alt="创建GitHub项目" width="700" /><br>创建完成后，GitHub 给我们列出了一些，快速设置这个仓库的操作指令。我们选择第一种，依次执行它给我们提供的这些命令。需要注意，<code>git add README.md</code> 这条命令我们要替换成 <code>git add .</code> 来把 my-blog 文件夹下的全部文件，都暂存到仓库。<br><img src="https://tyxiaoming.top/%E5%8D%9A%E5%AE%A2/%E5%88%9D%E5%A7%8B%E5%8C%96GitHub%E4%BB%93%E5%BA%93.png" srcset="/img/loading.gif" lazyload alt="创建GitHub项目" width="700" /></p>
+<h2 id="2-使用-GitHub-Pages-部署博客"><a href="#2-使用-GitHub-Pages-部署博客" class="headerlink" title="2. 使用 GitHub Pages 部署博客"></a>2. 使用 GitHub Pages 部署博客</h2><p>执行完配置命令以后，我们就可以使用 git 来管理博客项目了。接下来我们把 my-blog 项目，部署到 GitHub Pages 上。 这样我们的博客，就不再只是一个本地网站了。其他人也可以通过网络，来访问我们的博客。<br><br>首先在 my-blog 项目的 _config.yml 配置文件中，把 git 服务部署的配置加进去。在 type 配置项这里填上 git，然后分别添加一个 repository 和一个 branch 配置，指定部署博客网站时，所使用的 GitHub 项目和对应的分支。repository 这里填 <code>git@github.com:GitHub用户名/GitHub仓库名</code>，branch 这里指定 <code>main</code> 分支，然后保存配置。<br><br>最后我们执行 <code>npm install hexo-deployer-git --save</code> 命令，安装 hexo-deployer-git 这个插件，来简化部署到 GitHub Pages 的流程。<br><img src="https://tyxiaoming.top/%E5%8D%9A%E5%AE%A2/GitHub%E9%83%A8%E7%BD%B2%E9%85%8D%E7%BD%AE.png" srcset="/img/loading.gif" lazyload alt="GitHub部署配置" width="700" /><br>这样配置完以后，我们就可以在本地写文章，写完以后通过 <font color="#00A2FF"><i><b><a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000/</a></b></i></font> 预览文章效果并进行修改。修改满意后，就可以部署到 GitHub Pages 这样其他人就能访问我们的博客了。我们来看一下使用流程：<br><br>首先我们使用 <code>hexo new post 文章标题</code>，来创建一篇新文章。这样操作后，hexo 就会在 source&#x2F;_post 下面，给我们生成一个新文件来编辑这篇文章。我们使用上一篇文章，搭建的 <a href="/2025/01/12/%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A">免费图床</a> 来简单编辑一下这篇新文章。MarkDown 本地渲染一下，显示正常。然后执行这个三合一命令，把文章发布到 GitHub Pages。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo clean &amp;&amp; hexo generate &amp;&amp; hexo deploy<br></code></pre></td></tr></table></figure>
+<ul>
+<li>hexo clean：清除缓存，简写 hexo -c</li>
+<li>hexo generate：生成渲染，简写 hexo -g</li>
+<li>hexo deploy：部署到 GitHub Pages，简写 hexo -d</li>
+<li>hexo server：启动本地预览，简写 hexo -s</li>
+</ul>
+<p>发布完成后，打开 <code>https://github用户名.github.io/</code> 这个网址，就可以访问我们的在线博客了！👌<br><img src="https://tyxiaoming.top/%E5%8D%9A%E5%AE%A2/GitHubPages.png" srcset="/img/loading.gif" lazyload alt="GitHubPages" width="700" /></p>
+<h1 id="使用-Cloudflare-加速访问"><a href="#使用-Cloudflare-加速访问" class="headerlink" title="使用 Cloudflare 加速访问"></a>使用 Cloudflare 加速访问</h1><p>其实到这里，一个简单的博客就搭建完成了。但是 GitHub 的一个最大问题是，国内访问并不稳定。所以接下来我们使用免费的 Cloudflare 代理一层，来加速我们这个博客的访问速度！打开 Cloudflare，在左侧找到 worker 和 pages，点击选择 pages。然后选择连接到 git，选择 GitHub，选择仓库并给它授权就可以了。<br><img src="https://tyxiaoming.top/%E5%8D%9A%E5%AE%A2/cloudflare.png" srcset="/img/loading.gif" lazyload alt="cloudflare" width="700" /><br>接着点击开始设置，再点击开始部署。部署完成了，点击继续处理项目。在部署这里，上面这个网址，就是 Cloudflare 给我们分配的子域名。<br><img src="https://tyxiaoming.top/%E5%8D%9A%E5%AE%A2/cloudflare%E9%83%A8%E7%BD%B2%E5%AE%8C%E6%88%90.png" srcset="/img/loading.gif" lazyload alt="cloudflare部署" width="700" /></p>
+<h2 id="使用自定义域名"><a href="#使用自定义域名" class="headerlink" title="使用自定义域名"></a>使用自定义域名</h2><p>如果有托管到 Cloudflare 的域名，我们还可以用自己的域名，来实现自定义域。关于如何把网上购买的域名，托管到 Cloudflare，可以参考 <a href="/2025/01/12/%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A">免费图床</a> 这篇文章，里面有介绍如何把阿里云域名托管到 Cloudflare。<br><br>我们点击自定义域选项,然后点击设置自定义域，把域名填进去，点击继续。然后点击激活按钮，激活成功后就可以使用自定义域名来访问博客网站了。<br><img src="https://tyxiaoming.top/%E5%8D%9A%E5%AE%A2/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F.png" srcset="/img/loading.gif" lazyload alt="自定义域名" width="700" /></p>
+<h1 id="修改-Hexo-主题为-Fluid"><a href="#修改-Hexo-主题为-Fluid" class="headerlink" title="修改 Hexo 主题为 Fluid"></a>修改 Hexo 主题为 Fluid</h1><p>但是现在这个博客的主题，看上去不太好看。下面我们来换个好看点的主题，这里我们使用这个 <a target="_blank" rel="noopener" href="https://github.com/fluid-dev/hexo-theme-fluid">fluid主题</a>。hexo有很多开源免费的主题，大家可以自行选择。<br><img src="https://tyxiaoming.top/%E5%8D%9A%E5%AE%A2/fluid.png" srcset="/img/loading.gif" lazyload alt="fluid" width="700" /><br>我们来安装这个主题，我们用第2种安装方式：下载最新 release 版本，解压到 themes 目录，并将解压出的文件夹重命名为 fluid 就可以了。<br><img src="https://tyxiaoming.top/%E5%8D%9A%E5%AE%A2/%E5%AE%89%E8%A3%85fluid.png" srcset="/img/loading.gif" lazyload alt="安装fluid" width="700" /><br>在 _config.yml 文件中，添加配置 <code>theme: fluid</code> 指定使用 fluid 主题。然后生成about页面，修改index文件，这些都按照fluid的文档操作就可以。我们再重新部署一下，等部署完成刷新下博客的页面，可以看到现在博客主题已经变成 fluid 了。<br><img src="https://tyxiaoming.top/%E5%8D%9A%E5%AE%A2/fluid%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2.png" srcset="/img/loading.gif" lazyload alt="fluid主题博客" width="700" /></p>
+<h1 id="添加评论功能"><a href="#添加评论功能" class="headerlink" title="添加评论功能"></a>添加评论功能</h1><p>但是现在我们这个博客，它是没有评论功能的，拉到博客文章的最底部，可以看到是没有评论区的。<br><img src="https://tyxiaoming.top/%E5%8D%9A%E5%AE%A2/%E6%97%A0%E6%B3%95%E8%AF%84%E8%AE%BA.png" srcset="/img/loading.gif" lazyload alt="无法评论" width="700" /><br>下面我们来给博客添加一个评论功能，这里我们使用这个 <a target="_blank" rel="noopener" href="https://github.com/apps/utterances">utterances插件</a>，它是一个基于 GitHub Issue 的，开源评论插件。<br><img src="https://tyxiaoming.top/%E5%8D%9A%E5%AE%A2/%E8%AF%84%E8%AE%BA%E6%8F%92%E4%BB%B6.png" srcset="/img/loading.gif" lazyload alt="安装评论插件" width="700" /><br>我们点击安装它，然后选择对应的仓库给它授权。然后在 GitHub 仓库，点击设置，找到 features 下面这个 Discussion 选项，然后点击勾选上这个选项。<br><img src="https://tyxiaoming.top/%E5%8D%9A%E5%AE%A2/discussion.png" srcset="/img/loading.gif" lazyload alt="开启评论" width="700" /><br>接着我们需要修改 _config.fluid.yml 配置文件，在文件中填入下面的内容，保存就可以了。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash">post:<br>  comments:<br>    <span class="hljs-built_in">enable</span>: <span class="hljs-literal">true</span><br>    <span class="hljs-built_in">type</span>: utterances<br><br>utterances:<br>  repo: GitHub用户名/GitHub用户名.github.io<br>  issue_term: title<br>  label: utterances<br>  theme: github-light<br>  theme_dark: github-dark<br>  crossorigin: anonymous    <br><br></code></pre></td></tr></table></figure>
+<p>下面我们重新发布下服务，看下效果。发布完成了，打开博客网站，刷新下可以看到已经有评论功能了。我们用 GitHub 账号登录，然后发一条评论试试，评论发布成功，这样我们的评论功能就添加成功了。<br><img src="https://tyxiaoming.top/%E5%8D%9A%E5%AE%A2/%E8%AF%84%E8%AE%BA.png" srcset="/img/loading.gif" lazyload alt="评论测试" width="700" /></p>
+<h1 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h1><p>到这里我们这个博客就基本搭建完成了，其它一些细化功能，比如访问信息统计、网页布局调整等，都可以后续慢慢优化。总体来说这个方案，用来搭建个人博客是非常合适的。用到的资源基本全部免费，而且能够保证国内国外的用户，都能正常访问。大家如果感兴趣，可以自己动手搭建一个。<br><img src="https://tyxiaoming.top/%E5%8D%9A%E5%AE%A2/%E5%8D%9A%E5%AE%A2%E6%95%88%E6%9E%9C.png" srcset="/img/loading.gif" lazyload alt="博客效果" width="700" /></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%B7%A5%E5%85%B7%E6%95%99%E7%A8%8B/" class="print-no-link">#工具教程</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>搭建免费个人博博客：Cloudflare+GitHub+Hexo Fluid</div>
+      <div>https://syuanyuan708-github-io.pages.dev/2025/01/21/搭建免费个人博博客/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>陶渊小明</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年1月21日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/01/12/%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A/" title="个人图床最佳方案：Cloudflare R2+PicGo">
+                        <span class="hidden-mobile">个人图床最佳方案：Cloudflare R2+PicGo</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'syuanyuan708/syuanyuan708.github.io');
+      s.setAttribute('issue-term', 'title');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
