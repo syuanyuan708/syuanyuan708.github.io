@@ -1,0 +1,788 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.jpg">
+  <link rel="icon" href="/img/icon.jpg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="陶渊小明">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="前言从前段时间非常火的 Manus AI 到最近发布的 OpenAI 智能体，通用性的 AI Agent 已经成为下一代 AI 发展的主流趋势。AI Agent 的发展离不开一项最关键的技术，就是 MCP。那么使用 MCP，都能做些什么呢？  1. MCP 能做什么？以下是一个基于 MCP Server 自动化操作百度网盘 的示例。只需在 Cursor 配置 MCP Server，使用自然语言，就">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MCP下一代AI标准！原理+开发实战！Cursor、Claude、Cline！">
+<meta property="og:url" content="https://syuanyuan708-github-io.pages.dev/2025/04/04/MCP%E6%8A%80%E6%9C%AF/index.html">
+<meta property="og:site_name" content="陶渊小明">
+<meta property="og:description" content="前言从前段时间非常火的 Manus AI 到最近发布的 OpenAI 智能体，通用性的 AI Agent 已经成为下一代 AI 发展的主流趋势。AI Agent 的发展离不开一项最关键的技术，就是 MCP。那么使用 MCP，都能做些什么呢？  1. MCP 能做什么？以下是一个基于 MCP Server 自动化操作百度网盘 的示例。只需在 Cursor 配置 MCP Server，使用自然语言，就">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tyxiaoming.top/MCP/%E5%B0%81%E9%9D%A2.jpeg">
+<meta property="article:published_time" content="2025-04-04T09:02:20.000Z">
+<meta property="article:modified_time" content="2025-04-04T10:16:58.670Z">
+<meta property="article:author" content="陶渊小明">
+<meta property="article:tag" content="AI">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://tyxiaoming.top/MCP/%E5%B0%81%E9%9D%A2.jpeg">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>MCP下一代AI标准！原理+开发实战！Cursor、Claude、Cline！ - 陶渊小明</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/indeximg-hover.css">
+<link rel="stylesheet" href="/css/custom.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"syuanyuan708-github-io.pages.dev","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>陶渊小明</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/spacex.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="MCP下一代AI标准！原理+开发实战！Cursor、Claude、Cline！"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-04-04 17:02" pubdate>
+          2025年4月4日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          16 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">MCP下一代AI标准！原理+开发实战！Cursor、Claude、Cline！</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>从前段时间非常火的 <strong>Manus AI</strong> 到最近发布的 <strong>OpenAI 智能体</strong>，通用性的 <strong>AI Agent</strong> 已经成为下一代 AI 发展的主流趋势。AI Agent 的发展离不开一项最关键的技术，就是 <strong>MCP</strong>。<br><br>那么使用 MCP，都能做些什么呢？</p>
+<hr>
+<h2 id="1-MCP-能做什么？"><a href="#1-MCP-能做什么？" class="headerlink" title="1. MCP 能做什么？"></a>1. MCP 能做什么？</h2><p>以下是一个基于 MCP Server <strong>自动化操作百度网盘</strong> 的示例。只需在 <strong>Cursor</strong> 配置 MCP Server，使用自然语言，就能够完成百度网盘中文件的上传、下载等功能。<br><img src="https://tyxiaoming.top/MCP/百度网盘演示.png" srcset="/img/loading.gif" lazyload alt="百度网盘演示" width="750" /><br>接下来是一个 <strong>自动生成英伟达股票分析报告</strong> 的使用场景。只需要给 Cursor 配置 <strong>一个数据抓取的 MCP Server</strong> 和 <strong>一个操作本地文件的 MCP Server</strong>，它就能自动抓取指定的数据，并编写分析报告，自动保存到我们的电脑上。<br><img src="https://tyxiaoming.top/MCP/cursor演示.png" srcset="/img/loading.gif" lazyload alt="股票分析演示" width="750" /><br>我们上面演示的只是 MCP 的一些简单使用场景。通过 MCP，AI 和各类资源可以相互联通，从而使我们能够根据需要，定制化实现自己的专属 AI Agent。</p>
+<hr>
+<h2 id="2-MCP-技术介绍"><a href="#2-MCP-技术介绍" class="headerlink" title="2. MCP 技术介绍"></a>2. MCP 技术介绍</h2><p>要理解 <strong>MCP</strong>，我们首先回顾一下以前的 AI 工作方式。比如，我们让 AI 抓取 <strong>英伟达近一年的股票数据</strong>，并生成一份分析报告。<br><br>以前的 AI 可能会告诉我们，<strong>无法完成该任务</strong>，或者它会使用搜索引擎搜索相关数据，但它 <strong>无法把报告自动保存到我们的电脑上</strong>，需要手动复制保存。以前的 AI 更像是一个 <strong>黑盒子</strong>，接收一个问题后输出答案，但其它操作无法自动完成。<br><br>而 <strong>MCP 的出现，就是为了解决这个问题</strong>！有了 MCP 后，再让 AI 完成相同任务时，它会先通过 <strong>数据抓取的 MCP Server</strong> 获取指定数据，然后生成报告，最后通过 <strong>本地文件的 MCP Server</strong> 将报告保存到本地。<br><img src="https://tyxiaoming.top/MCP/MCP自动化.png" srcset="/img/loading.gif" lazyload alt="MCP自动化" width="750" /><br>换句话说，以前 AI <strong>无法自动完成的操作</strong>，现在可以通过 <strong>MCP Server</strong> 完成。</p>
+<h3 id="MCP-是什么？"><a href="#MCP-是什么？" class="headerlink" title="MCP 是什么？"></a>MCP 是什么？</h3><p>MCP 的全称是 <strong>Model Context Protocol</strong>（模型上下文协议），由 <strong>Anthropic</strong> 提出，是一个 <strong>开放协议</strong>。它就像一个 <strong>USB 接口</strong>，能够将 AI 模型与 <strong>网络、本地文件、数据库、GitHub</strong> 等资源互联。</p>
+<h3 id="MCP-的架构"><a href="#MCP-的架构" class="headerlink" title="MCP 的架构"></a>MCP 的架构</h3><p>MCP 采用了 <strong>C&#x2F;S 架构设计</strong>，包括 <strong>Client（客户端）</strong> 和 <strong>Server（服务器）</strong> 两部分。</p>
+<ul>
+<li><strong>Client</strong> 从 Server 获取 <strong>功能列表</strong>，了解可用的 MCP Server 服务。</li>
+<li>客户端根据功能列表调用对应的服务。</li>
+</ul>
+<br>
+📌 **示例：英伟达股票分析报告的执行流程**
+
+<ol>
+<li>在 <strong>Cursor</strong> 配置 MCP Server，包括 <strong>数据抓取 Server</strong> 和 <strong>本地文件操作 Server</strong>。</li>
+<li>MCP Client <strong>查询功能列表</strong>，发现可以 <strong>抓取数据 firecrawl_scrape</strong>。</li>
+<li>AI 调用 <strong>firecrawl_scrape</strong>，从指定网页抓取股票数据。</li>
+<li>AI 生成分析报告。</li>
+<li>MCP Client <strong>发现 write_file 功能</strong>，调用 <strong>本地文件 Server</strong> 将报告保存到电脑。</li>
+</ol>
+<p><strong>除了 Cursor，Claude、Cline 等工具也内置了 MCP Client</strong>，可以直接配置 MCP Server。<br><img src="https://tyxiaoming.top/MCP/MCP流程.png" srcset="/img/loading.gif" lazyload alt="MCP流程" width="750" /><br>如果 MCP <strong>能够顺利推广</strong>，它将成为 <strong>统一 AI 生态圈的开放标准</strong>。</p>
+<hr>
+<h2 id="3-MCP-Server-开发"><a href="#3-MCP-Server-开发" class="headerlink" title="3. MCP Server 开发"></a>3. MCP Server 开发</h2><p>如果你想要开发一个属于自己的 <strong>MCP Server</strong>，以下是详细的开发步骤。我们以实现一个 <strong>百度网盘的 MCP Server</strong> 为例，来进行详细介绍。</p>
+<h3 id="3-1-准备工作"><a href="#3-1-准备工作" class="headerlink" title="3.1 准备工作"></a>3.1 准备工作</h3><p>首先，需要安装一些开发工具和依赖，确保开发环境已经准备好。</p>
+<ol>
+<li><p><strong>安装 uv（Python 环境管理工具）</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip install uv<br></code></pre></td></tr></table></figure>
+
+<p><code>uv</code> 工具可以帮助你创建和管理虚拟环境，保证项目的依赖隔离。</p>
+</li>
+<li><p><strong>创建 MCP Server 项目</strong></p>
+<p>使用 <code>uv</code> 创建一个新的 MCP Server 项目。以下命令将创建一个名为 <code>baidu</code> 的项目目录：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">uv new baidu<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>安装所需的依赖</strong></p>
+<p>我们需要安装一些用于与百度网盘交互的库，比如 <strong>bypy</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip install bypy<br></code></pre></td></tr></table></figure>
+
+<p>这些库将帮助你实现与百度网盘的自动化交互。</p>
+</li>
+</ol>
+<h3 id="3-2-开发-MCP-Server"><a href="#3-2-开发-MCP-Server" class="headerlink" title="3.2 开发 MCP Server"></a>3.2 开发 MCP Server</h3><p>以下是开发一个完整的 MCP Server 的流程，包括编写代码、定义工具函数、启动服务器等。</p>
+<ol>
+<li><p><strong>删除默认文件</strong></p>
+<p>项目创建后，会生成一个默认的 <code>hello.py</code> 文件。你可以删除这个文件，专门编写自己需要的功能代码。</p>
+</li>
+<li><p><strong>编写 MCP Server 的代码</strong></p>
+<p>下面是一个简单的百度网盘文件上传和下载功能的实现：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> typing <span class="hljs-keyword">import</span> <span class="hljs-type">Any</span><br><span class="hljs-keyword">from</span> bypy <span class="hljs-keyword">import</span> ByPy<br><span class="hljs-keyword">from</span> mcp.server.fastmcp <span class="hljs-keyword">import</span> FastMCP<br><br><span class="hljs-comment"># 初始化 FastMCP server</span><br>mcp = FastMCP(<span class="hljs-string">&quot;baidu&quot;</span>)<br><br><span class="hljs-meta">@mcp.tool()</span><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">def</span> <span class="hljs-title function_">upload_file</span>(<span class="hljs-params">src_file: <span class="hljs-built_in">str</span></span>):<br>    <span class="hljs-string">&quot;&quot;&quot;上传文件到百度网盘</span><br><span class="hljs-string"></span><br><span class="hljs-string">    Args:</span><br><span class="hljs-string">        src_file: 需要上传的文件路径</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br>    bp = ByPy()<br>    bp.upload(<br>        localpath=src_file,<br>        remotepath=src_file.split(<span class="hljs-string">&quot;/&quot;</span>)[-<span class="hljs-number">1</span>]<br>    )  <br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;上传成功&quot;</span> <br><br><span class="hljs-meta">@mcp.tool()</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">upload_path</span>(<span class="hljs-params">src_path: <span class="hljs-built_in">str</span></span>):<br>    <span class="hljs-string">&quot;&quot;&quot;上传文件夹到百度网盘</span><br><span class="hljs-string"></span><br><span class="hljs-string">    Args:</span><br><span class="hljs-string">        src_path: 需要上传的文件夹路径</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br>    bp = ByPy()<br>    bp.syncup(<br>        src_path,<br>        src_path.split(<span class="hljs-string">&quot;/&quot;</span>)[-<span class="hljs-number">1</span>]<br>    )<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;上传成功&quot;</span>   <br><br><span class="hljs-meta">@mcp.tool()</span><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">def</span> <span class="hljs-title function_">download_file</span>(<span class="hljs-params">src_file: <span class="hljs-built_in">str</span>, target_file: <span class="hljs-built_in">str</span></span>):<br>    <span class="hljs-string">&quot;&quot;&quot;下载文件到本地</span><br><span class="hljs-string"></span><br><span class="hljs-string">    Args:</span><br><span class="hljs-string">        src_file: 需要下载的文件路径</span><br><span class="hljs-string">        target_file: 下载到的文件路径</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br>    bp = ByPy()<br>    bp.download(<br>        src_file,<br>        target_file<br>    )  <br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;下载成功&quot;</span><br><br><span class="hljs-meta">@mcp.tool()</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">download_path</span>(<span class="hljs-params">src_path: <span class="hljs-built_in">str</span>, target_path: <span class="hljs-built_in">str</span></span>):<br>    <span class="hljs-string">&quot;&quot;&quot;下载文件夹到本地</span><br><span class="hljs-string"></span><br><span class="hljs-string">    Args:</span><br><span class="hljs-string">        src_path: 需要下载的文件夹路径</span><br><span class="hljs-string">        target_path: 下载到的文件夹路径</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br>    bp = ByPy()<br>    bp.syncdown(<br>        src_path,<br>        target_path<br>    )<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;下载成功&quot;</span> <br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br>    <span class="hljs-comment"># 修改传输方式以适应 Cursor 环境，比如使用 &#x27;ws&#x27; 传输</span><br>    mcp.run(transport=<span class="hljs-string">&#x27;stdio&#x27;</span>)<br><br></code></pre></td></tr></table></figure>
+
+<p>代码说明：</p>
+<ul>
+<li>使用 <code>@server.tool</code> 装饰器来定义 <code>upload_file</code> 和 <code>download_file</code> 两个函数，分别用于百度网盘的上传和下载操作。</li>
+<li>通过 <strong>bypy</strong> 库来完成与百度网盘的交互。</li>
+<li>启动服务器后，MCP Client 可以通过配置调用这些功能。</li>
+</ul>
+</li>
+<li><p><strong>获取百度网盘的 Token</strong></p>
+<p>使用 <strong>bypy</strong> 时，需要进行身份认证。你需要获取 <strong>百度网盘的 API Token</strong>。执行下面这段代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> bypy <span class="hljs-keyword">import</span> ByPy<br>bp = ByPy()<br><span class="hljs-built_in">print</span>(bp.<span class="hljs-built_in">list</span>())<br></code></pre></td></tr></table></figure>
+
+<p>然后使用输出的网址，获取token：</p>
+<ul>
+<li>在浏览器中访问授权链接，复制 Token。</li>
+<li>在代码中使用该 Token 完成身份验证。</li>
+</ul>
+</li>
+</ol>
+<img src="https://tyxiaoming.top/MCP/百度token.png" srcset="/img/loading.gif" lazyload alt="bypy token" width="750" />
+
+<h3 id="3-3-启动-MCP-Server"><a href="#3-3-启动-MCP-Server" class="headerlink" title="3.3 启动 MCP Server"></a>3.3 启动 MCP Server</h3><p>完成代码编写后，启动 MCP Server：</p>
+<ol>
+<li><p><strong>获取项目路径</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">pwd</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>获取 uv 路径</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">which</span> uv<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>启动 MCP Server</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">uv run baidu.py<br></code></pre></td></tr></table></figure></li>
+</ol>
+<p>然后，在 <strong>Cursor &gt; 设置 &gt; MCP &gt; 添加 MCP Server</strong> 中，输入启动命令，即可使用。<br><img src="https://tyxiaoming.top/MCP/cursor配置.png" srcset="/img/loading.gif" lazyload alt="cursor配置MCP" width="750" /></p>
+<p>注意命令中的 <code>uv</code> 如果没有设置环境变量的话，需要使用<code>uv</code>的绝对路径， <strong>Linux&#x2F;MacOS</strong> 可以执行：</p>
+   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">which</span> uv<br></code></pre></td></tr></table></figure>
+<p><strong>Windows</strong> 可以执行：  </p>
+   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">where</span> uv<br></code></pre></td></tr></table></figure>
+<hr>
+<h2 id="4-MCP-Server-的使用"><a href="#4-MCP-Server-的使用" class="headerlink" title="4. MCP Server 的使用"></a>4. MCP Server 的使用</h2><p>在 <strong>Cursor</strong> 中配置 MCP Server 后，你可以通过自然语言与 AI 进行交互，自动完成文件上传、下载等任务。</p>
+<p>📌 <strong>示例：AI 自动管理百度网盘文件</strong></p>
+<ol>
+<li><strong>上传文件</strong>：<ul>
+<li>AI 解析提示词，调用 <code>upload_file</code>。</li>
+<li>文件成功上传到百度网盘。</li>
+</ul>
+</li>
+</ol>
+<p>效果图：<br><img src="https://tyxiaoming.top/MCP/上传文件.png" srcset="/img/loading.gif" lazyload alt="上传文件" width="750" /></p>
+<ol start="2">
+<li><strong>下载文件</strong>：<ul>
+<li>AI 解析提示词，调用 <code>download_file</code>。</li>
+<li>文件成功下载到本地。</li>
+</ul>
+</li>
+</ol>
+<p>效果图：<br><img src="https://tyxiaoming.top/MCP/百度网盘演示.png" srcset="/img/loading.gif" lazyload alt="下载文件" width="750" /></p>
+<hr>
+<h2 id="5-直接使用外部-MCP-Server"><a href="#5-直接使用外部-MCP-Server" class="headerlink" title="5. 直接使用外部 MCP Server"></a>5. 直接使用外部 MCP Server</h2><p>除了开发自己的 MCP Server，你还可以直接使用其他人开发的 MCP Server。例如，进行 <strong>自动化股票分析</strong> 时，直接配置 <strong>数据抓取 MCP Server</strong> 和 <strong>本地文件操作 MCP Server</strong>，然后自动完成数据抓取、报告生成和保存操作。<br><br><img src="https://tyxiaoming.top/MCP/cursor2.png" srcset="/img/loading.gif" lazyload alt="配置MCP" width="750" /></p>
+<p>除了 <strong>cursor</strong> 像 <strong>Claude、cline</strong> 也都内置了 MCP 客户端，可以直接配置 MCP Server。<strong>Claude</strong> 需要在 <code>json</code> 文件中配置：<br><img src="https://tyxiaoming.top/MCP/Claude配置.png" srcset="/img/loading.gif" lazyload alt="Claude配置MCP" width="750" /></p>
+<p><strong>cline</strong> 和 <strong>Claude</strong> 一样，也需要在 <code>json</code> 文件中配置：<br><img src="https://tyxiaoming.top/MCP/cline配置.png" srcset="/img/loading.gif" lazyload alt="cline配置MCP" width="750" /></p>
+<hr>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>MCP 使 <strong>AI 更强大</strong>，能够 <strong>自动执行复杂任务</strong>，并连接各类资源。未来，每个人都可以根据自己的需求，打造属于自己的 AI Agent。<br><br>感谢大家的点赞支持，我们下期见！🚀</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/AI/" class="print-no-link">#AI</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>MCP下一代AI标准！原理+开发实战！Cursor、Claude、Cline！</div>
+      <div>https://syuanyuan708-github-io.pages.dev/2025/04/04/MCP技术/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>陶渊小明</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年4月4日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/03/28/ChatGPT%E5%85%8D%E8%B4%B9API/" title="免费 ChatGPT API 公益项目使用指南">
+                        <span class="hidden-mobile">免费 ChatGPT API 公益项目使用指南</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'syuanyuan708/syuanyuan708.github.io');
+      s.setAttribute('issue-term', 'title');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
